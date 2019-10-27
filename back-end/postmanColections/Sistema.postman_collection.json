@@ -1,0 +1,530 @@
+{
+	"info": {
+		"_postman_id": "5009443d-98b2-42dc-9989-fe411bfbf233",
+		"name": "Sistema",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Testes Iniciais",
+			"description": "",
+			"item": [
+				{
+					"name": "http://localhost:3000",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:3000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000"
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000 /products",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"lorem\":\"lgfaovgbiab\",\n\t\"wuhvipbvai\":\"hruofo´hf\",\n\t\"aaaaaaaaa\":\"dddddddd\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/products/123",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"lorem\":\"lgfaovgbiab\",\n\t\"wuhvipbvai\":\"hruofo´hf\",\n\t\"aaaaaaaaa\":\"dddddddd\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/products/123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products",
+								"123"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:3000/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"description": "",
+			"item": [
+				{
+					"name": "http://localhost:3000/products",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"dykftkfd\",\n\t\"slug\": \"yyyhhh\",\n\t\"description\": \"Novo tenis da nike!\",\n\t\"price\": 150,\n\t\"active\": false,\n\t\"tags\":[\"tenis\", \"promo\", \"masculino\"]\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ALL - http://localhost:3000/products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:3000/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BY_ID - http://localhost:3000/products/5b1ff38f32b6c505602832ad",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:3000/products/id/5b1ff38f32b6c505602832ad",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products",
+								"id",
+								"5b1ff38f32b6c505602832ad"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BY_SLUG - http://localhost:3000/products/tenis-nike",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:3000/products/tenis-nike",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products",
+								"tenis-nike"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BY_TAG - http://localhost:3000/products/tag/promo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:3000/products/tag/promo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products",
+								"tag",
+								"promo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/products/5b1ff38f32b6c505602832ad",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"oyfyouvgoyz\",\n    \"price\": 2016451\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/products/5b1ff38f32b6c505602832ad",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products",
+								"5b1ff38f32b6c505602832ad"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/products/5b20295319be543cf0add582",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:3000/products/5b20295319be543cf0add582",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products",
+								"5b20295319be543cf0add582"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customer",
+			"description": "",
+			"item": [
+				{
+					"name": "http://localhost:3000/products",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"ciytciyc\",\n\t\"email\": \"dzsgsdhdhd@gmail.com\",\n\t\"password\": \"78374373737354\", \n\t\"slug\": \"fhzg\\sg\\sg\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/customer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ALL - http://localhost:3000/customer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:3000/customer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BY_ID - http://localhost:3000/customer/5b1ff38f32b6c505602832ad",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:3000/customer/id/5b22753c550a6722dcd0fcf6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"customer",
+								"id",
+								"5b22753c550a6722dcd0fcf6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/customer/5b1ff38f32b6c505602832ad",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"fulno_novo@gmail.com\",\n    \"password\": \"suvboybvyouvb\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/customer/5b22731a9b9fb22940f89654",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"customer",
+								"5b22731a9b9fb22940f89654"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/customer/5b20295319be543cf0add582",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:3000/customer/5b20295319be543cf0add582",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"customer",
+								"5b20295319be543cf0add582"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"description": "",
+			"item": [
+				{
+					"name": "http://localhost:3000/order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"customer\": \"5b22753c550a6722dcd0fcf6\",\n\t\"items\": [\n\t\t{ \"quantity\": 1, \"price\": 150, \"product\": \"5b212d9232f0c3255c9953a4\" }\n\t]\n\t\n}\n"
+						},
+						"url": {
+							"raw": "http://localhost:3000/order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ALL - http://localhost:3000/order",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:3000/order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BY_ID - http://localhost:3000/order/5b1ff38f32b6c505602832ad",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:3000/order/id/5b22c27fd044c61fbc76209b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"order",
+								"id",
+								"5b22c27fd044c61fbc76209b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/order/5b1ff38f32b6c505602832ad",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"customer\": \"5b227541550a6722dcd0fcf7\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/order/5b22c27fd044c61fbc76209b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"order",
+								"5b22c27fd044c61fbc76209b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/order/5b20295319be543cf0add582",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:3000/order/5b20295319be543cf0add582",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"order",
+								"5b20295319be543cf0add582"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
