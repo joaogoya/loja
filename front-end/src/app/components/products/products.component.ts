@@ -9,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor(private productsService: ProductsService ) { }
-
   products: Product[];
+  public spinner = true;
+  public page = 1;
+  public pageSize = 10;
+
+  constructor(private productsService: ProductsService ) { }
 
   ngOnInit() {
     this.getAll();
@@ -19,7 +22,8 @@ export class ProductsComponent implements OnInit {
 
   private getAll() {
     this.productsService.getAll().subscribe(data => {
-      console.table(data);
+      this.products = data;
+      this.spinner = false;
     });
   }
 

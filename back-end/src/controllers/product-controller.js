@@ -10,7 +10,9 @@ exports.get = (req, res, next) => {
   repository
     .get()
     .then(data => {
-      res.status(200).send(data)
+      setTimeout(() => {
+        res.status(200).send(data)
+      }, 2000);      
     })
     .catch(e => {
       res.status(400).send(e);

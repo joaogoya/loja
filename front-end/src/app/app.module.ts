@@ -8,6 +8,8 @@ import { SalesComponent } from './components/sales/sales.component';
 import { ClientsComponent } from './components/clients/clients.component';
 import { MenuComponent } from './shared/menu/menu.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,14 @@ import { HttpClientModule } from '@angular/common/http';
     ProductsComponent,
     SalesComponent,
     ClientsComponent,
-    MenuComponent
+    MenuComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
