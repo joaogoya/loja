@@ -1,4 +1,25 @@
-<button class="btn btn-primary">{{ infos.btnMessage }}</button>
+<div class="row">
+    <div class="col-sm-6">
+      <button class="btn btn-primary">{{ infos.btnMessage }}</button>
+    </div>
+    <div class="col-sm-6">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Pesquisar pelo nome"
+          (keyup)="searchBar($event.target.value)"
+        />
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="button" >
+            OK
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--  -->
 <br /><br />
 
 <!-- DESKTP -->
@@ -12,6 +33,14 @@
         <th scope="col" class="title">Ações</th>
       </tr>
     </thead>
+    <tbody *ngIf="search && !hasResult">
+      <tr>
+        <td colspan="5">
+          <h4>Não foram encontrados resultados para a pesquisa: <i class="bg-primary">'{{ term }}'</i>
+          </h4>
+        </td>
+      </tr>
+    </tbody>
     <tbody>
       <tr
         *ngFor="
@@ -27,7 +56,16 @@
       </tr>
     </tbody>
   </table>
-</div>
+  <div class="row">
+      <div class="col-md-6">
+      </div>
+      <div class="col-md-6">
+        <button *ngIf="search && !hasResult" class="btn btn-primary float-right" (click)="reload()">Recarregar lista</button>
+      </div>
+    </div>
+  </div>
+
+
 
 <!-- MOBILE -->
 <div class="d-sm-block d-md-none">
