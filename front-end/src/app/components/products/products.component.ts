@@ -8,15 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-
-  products: Product[];
   public spinner = true;
-  public page = 1;
-  public pageSize = 10;
-  public error;
   public success = false;
 
-  constructor(private productsService: ProductsService ) { }
+  public error = {
+    name: '',
+    message: ''
+  };
+
+  public products: Product[];
+  public infos = {
+    component: 'products',
+    btnMessage: 'Novo produto',
+    data: []
+  };
+
+  constructor(private productsService: ProductsService) {}
 
   ngOnInit() {
     this.getAll();
@@ -24,15 +31,16 @@ export class ProductsComponent implements OnInit {
 
   private getAll() {
     this.productsService.getAll().subscribe(
-      (res) => {
-        this.products = res;
+      res => {
+        this.infos.data = res;
         this.spinner = false;
         this.success = true;
-        console.log(res);
       },
-      (err) => {
+      err => {
         this.spinner = false;
-        this.error = err;
-      });
+        this.error.name = err.name;
+        this.error.message = err.message;
+      }
+    );
   }
 }

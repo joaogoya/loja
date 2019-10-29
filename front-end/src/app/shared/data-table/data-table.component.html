@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-sm-6">
+    <button class="btn btn-primary">Novo</button>
+  </div>
+  <div class="col-sm-6">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Pesquisar pelo nome"
+      />
+      <div class="input-group-append">
+        <button class="btn btn-primary" type="button">
+          OK
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th *ngFor="let item of atributes" scope="col">{{ item }}</th>
+      <th scope="col">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="
+        let item of data
+          | slice: (page - 1) * pageSize:(page - 1) * pageSize + pageSize
+      "
+    >
+      <td *ngFor="let atribute of atributes; let i = index">{{ item[i] }}</td>
+      <td>
+        <button class="btn btn-primary">Editar</button>
+        <button class="btn btn-danger">Deletar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<ngb-pagination
+  class="d-flex justify-content-center"
+  [(page)]="page"
+  [pageSize]="pageSize"
+  [collectionSize]="data.length"
+></ngb-pagination>

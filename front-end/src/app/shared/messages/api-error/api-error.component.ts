@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-api-error',
@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ApiErrorComponent implements OnInit {
 
+  @Input() errorInfos;
+
   constructor() { }
 
   ngOnInit() {
+    console.log('erro');
+    console.log(this.errorInfos);
   }
 
 }

@@ -12,6 +12,7 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ApiErrorComponent } from './shared/messages/api-error/api-error.component';
+import { DataTableComponent } from './shared/data-table/data-table.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ApiErrorComponent } from './shared/messages/api-error/api-error.compone
     ClientsComponent,
     MenuComponent,
     SpinnerComponent,
-    ApiErrorComponent
+    ApiErrorComponent,
+    DataTableComponent
   ],
   imports: [
     BrowserModule,
