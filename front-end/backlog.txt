@@ -2,23 +2,24 @@
 
 ainda só com a lsita de prods:
 	mondularizar a aplicação
+	
 	gurda rotas
 		canLoad e pg de ligon
 		resolve
 	
 	carregamento por demanda
 
-	paginação da lista
+	paginação da lista - foi
 	
 	ordenação da lista
 
 	ferramenta de pesquisa
 	
-	catch error na classe de serviço p tratar retorno da api
+	catch error  - foi
 	
 	testar funções
 	
-	spinners
+	spinners - foi
 	
 
 Products form

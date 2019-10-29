@@ -1,50 +1,82 @@
 <app-spinner *ngIf="spinner"></app-spinner>
 
-<div class="row">
-  <div class="col-sm-6">
-    <button class="btn btn-success">Novo Produto</button>
+<div *ngIf="!spinner && success" id="sucess">
+  <div class="row">
+    <div class="col-sm-6">
+      <button class="btn btn-success">Novo Produto</button>
+    </div>
+    <div class="col-sm-6">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Pesquisar pelo nome"
+        />
+        <div class="input-group-append">
+          <button class="btn btn-info" type="button">
+            OK
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="col-sm-6">
-    <div class="input-group mb-3">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Pesquisar pelo nome"
-      />
-      <div class="input-group-append">
-        <button class="btn btn-info" type="button">
-          OK
-        </button>
+
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Produto</th>
+        <th scope="col">slug</th>
+        <th scope="col">Preço</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="
+          let product of products
+            | slice: (page - 1) * pageSize:(page - 1) * pageSize + pageSize
+        "
+      >
+        <th scope="row">{{ product._id }}</th>
+        <td>{{ product.title }}</td>
+        <td>{{ product.slug }}</td>
+        <td>{{ product.price }}</td>
+        <td>
+          <button class="btn btn-info">Editar</button>
+          <button class="btn btn-danger">Deletar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <ngb-pagination
+    class="d-flex justify-content-center"
+    *ngIf="!spinner"
+    [(page)]="page"
+    [pageSize]="pageSize"
+    [collectionSize]="products.length"
+  ></ngb-pagination>
+</div>
+
+<div *ngIf="!spinner && !success" id="error">
+  <div class="row">
+    <div class="col-12">
+      <div class="card bg-danger text-light">
+        <div class="card-header">
+          <h3>Houve um erro.</h3>
+        </div>
+        <div class="card-body">
+          <p>
+            <b>Erro: </b> <i> {{ error.name }}</i>
+          </p>
+          <p>
+            <b>Mensagem: </b> <i>{{ error.message }}</i>
+          </p>
+        </div>
+        <div class="card-footer">
+          <small>Por favor contate o administrador do sistema.</small>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
-<table class="table table-striped">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">id</th>
-      <th scope="col">Produto</th>
-      <th scope="col">slug</th>
-      <th scope="col">Preço</th>
-      <th scope="col">Ações</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let product of products | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
-      <th scope="row">{{ product._id }}</th>
-      <td>{{ product.title }}</td>
-      <td>{{ product.slug }}</td>
-      <td>{{ product.price }}</td>
-      <td>
-        <button class="btn btn-info">Editar</button>
-        <button class="btn btn-danger">Deletar</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<ngb-pagination *ngIf="!spinner" [(page)]="page" [pageSize]="pageSize" [collectionSize]="products.length"></ngb-pagination>
-
-
-
-

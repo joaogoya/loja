@@ -14,6 +14,9 @@ export class ProductsComponent implements OnInit {
   public page = 1;
   public pageSize = 10;
 
+  public error;
+  public success = false;
+
   constructor(private productsService: ProductsService ) { }
 
   ngOnInit() {
@@ -21,10 +24,17 @@ export class ProductsComponent implements OnInit {
   }
 
   private getAll() {
-    this.productsService.getAll().subscribe(data => {
-      this.products = data;
-      this.spinner = false;
-    });
+    this.productsService.getAll().subscribe(
+      (res) => {
+        this.products = res;
+        this.spinner = false;
+        this.success = true;
+        console.log(res);
+      },
+      (err) => {
+        console.log('getData has thrown and error of', err);
+        this.spinner = false;
+        this.error = err;
+      });
   }
-
 }
