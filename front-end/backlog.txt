@@ -8,16 +8,17 @@ ainda no modulo de produtos apenas:
 	
 	spinners - foi
 	
+	colocar tabela no shared - foi
+	
 	refactoring msg de erro
 		melhorar leiaute
 		colocar no shared
 	
+	tabela mobile
+	
 	ferramenta de pesquisa
 	
 	ordenação da lista
-	
-	colocar tabela no shared
-		desk e mobile
 	
 	testar funções
 

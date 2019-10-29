@@ -1,4 +1,3 @@
-import { Product } from './../../entiets/product';
 import { ProductsService } from './../../services/products.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
+
   public spinner = true;
   public success = false;
 
@@ -16,7 +16,6 @@ export class ProductsComponent implements OnInit {
     message: ''
   };
 
-  public products: Product[];
   public infos = {
     component: 'products',
     btnMessage: 'Novo produto',
