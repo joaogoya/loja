@@ -1,36 +1,39 @@
 
 
-ainda só com a lsita de prods:
-	mondularizar a aplicação
-	
-	gurda rotas
-		canLoad e pg de ligon
-		resolve
-	
-	carregamento por demanda
+ainda no modulo de produtos apenas:
 
 	paginação da lista - foi
 	
-	ordenação da lista
-
-	ferramenta de pesquisa
-	
 	catch error  - foi
-	
-	testar funções
 	
 	spinners - foi
 	
+	refactoring msg de erro
+		melhorar leiaute
+		colocar no shared
+	
+	ferramenta de pesquisa
+	
+	ordenação da lista
+	
+	colocar tabela no shared
+		desk e mobile
+	
+	testar funções
 
-Products form
-
-	rotas filhas por demanda
+	Products form
+		
+		guarda can deactivate
+		
+		toaster
+		
+		campo control no shared
 	
-	guarda can deactivate
-	
-	toaster
-	
-	campo control
+mondularizar a aplicação	
+	gurda rotas
+		canLoad e pg de ligon
+		resolve	
+		carregamento por demanda
 	
 escrever kit ui
 

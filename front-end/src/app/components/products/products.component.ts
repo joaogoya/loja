@@ -13,7 +13,6 @@ export class ProductsComponent implements OnInit {
   public spinner = true;
   public page = 1;
   public pageSize = 10;
-
   public error;
   public success = false;
 
@@ -32,7 +31,6 @@ export class ProductsComponent implements OnInit {
         console.log(res);
       },
       (err) => {
-        console.log('getData has thrown and error of', err);
         this.spinner = false;
         this.error = err;
       });

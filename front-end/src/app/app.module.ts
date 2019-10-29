@@ -10,6 +10,8 @@ import { MenuComponent } from './shared/menu/menu.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { ApiErrorComponent } from './shared/messages/api-error/api-error.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +20,15 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     SalesComponent,
     ClientsComponent,
     MenuComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    ApiErrorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
