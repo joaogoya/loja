@@ -1,21 +1,20 @@
-import { ProductsListComponent } from './components/products/products-list/products-list.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SalesComponent } from './components/sales/sales.component';
-import { ClientsListComponent } from './components/clients/clients-list/clients-list.component';
 
 const routes: Routes = [
-  {path: 'sales', component: SalesComponent},
-  {path: 'clients', component: ClientsListComponent},
 
   { path: 'products',
     loadChildren: () => import('./components/products/products.module').then(e => e.ProducsModule)
   },
 
-  // {
-  //   path: 'dragons',
-  //   loadChildren: './components/dragons/dragon.module#DragonModule'
-  // }
+  {path: 'clients',
+    loadChildren: () => import('./components/clients/clients.module').then(e => e.ClientssModule)
+  },
+
+  {path: 'sales',
+    loadChildren: () => import('./components/sales/sales.module').then(e => e.SalesModule)
+  },
+
 ];
 
 @NgModule({

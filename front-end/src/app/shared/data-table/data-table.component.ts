@@ -87,7 +87,7 @@ export class DataTableComponent implements OnInit {
       }
     }
   }
-    /*==========================================>>> End of Searchbar <<<<=====*/
+  /*==========================================>>> End of Searchbar <<<<=====*/
 
   public tableSorting(index) {
 
