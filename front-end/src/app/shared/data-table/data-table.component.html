@@ -5,11 +5,12 @@
     <div class="col-sm-6">
       <div class="input-group mb-3">
         <input
+          #inputSearchBar
           type="text"
           class="form-control"
           placeholder="Pesquisar pelo nome"
-          (keyup)="searchBar($event.target.value)"
-        /> <!--target.value-->
+          (keyup)="searchBar($event)"
+        />
       </div>
     </div>
   </div>
