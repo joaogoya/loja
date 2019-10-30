@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Product } from '../entiets/product';
+import { Product } from '../../entiets/product';
 import { Router } from '@angular/router';
 
 @Injectable({

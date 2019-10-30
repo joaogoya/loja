@@ -10,36 +10,57 @@ ainda no modulo de produtos apenas:
 	
 	colocar tabela no shared - foi
 	
-	refactoring msg de erro
-		melhorar leiaute
-		colocar no shared
+	refactoring msg de erro do servidor no shared - foi
 	
 	tabela mobile - foi
 	
-	ferramenta de pesquisa
+	ferramenta de pesquisa - foi
 	
-	ordenação da lista
+	ordenação da lista - foi
 	
-	testar funções
-
-	Products form
+	fazer os outros componentes consumirem a tabela
+		ver como a api entrega
+		tratar no componente e mandar o que a tebela espera pra nao ter que mexer na api
+	
+	
+mondularizar a aplicação	
+	
+	criar os componentes fomrs de cada modulo
+		envolve rotas
+	
+	modularizar aplicação
+		modulo e rota por modulo
+	
+	carregamento por demanda
 		
+	modularizar o shared
+	
+	gurda rotas
+		canLoad e pg de loginn
+		resolve	
+		canDeactivate nos forms
+		
+		
+Cruds
+	
+	forms
 		guarda can deactivate
 		
-		toaster
+		toaster compartilhado
 		
 		campo control no shared
 	
-mondularizar a aplicação	
-	gurda rotas
-		canLoad e pg de ligon
-		resolve	
-		carregamento por demanda
+	deletes
+		modal confirmation compartilhada
+		
+		acionar api
+
+
+		
+testar funções
 	
 escrever kit ui
 
-	
-	
 
 
 

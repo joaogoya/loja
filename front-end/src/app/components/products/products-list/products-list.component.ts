@@ -1,12 +1,12 @@
-import { ProductsService } from './../../services/products.service';
 import { Component, OnInit } from '@angular/core';
+import { ProductsService } from '../../../services/products/products.service';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  selector: 'app-products-list',
+  templateUrl: './products-list.component.html',
+  styleUrls: ['./products-list.component.scss']
 })
-export class ProductsComponent implements OnInit {
+export class ProductsListComponent implements OnInit {
 
   public spinner = true;
   public success = false;
@@ -42,4 +42,5 @@ export class ProductsComponent implements OnInit {
       }
     );
   }
+
 }

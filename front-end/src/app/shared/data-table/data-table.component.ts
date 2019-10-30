@@ -24,12 +24,12 @@ export class DataTableComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.dataHandlig();
+    this.dataHandlig(this.infos.data);
   }
 
-  public dataHandlig() {
-    this.atributes = Object.keys(this.infos.data[0]);
-    this.infos.data.forEach(element => {
+  public dataHandlig(values) {
+    this.atributes = Object.keys(values[0]);
+    values.forEach(element => {
       this.data.push(Object.values(element));
     });
   }
@@ -37,7 +37,7 @@ export class DataTableComponent implements OnInit {
   public reload() {
     this.hasResult = true;
     this.inputSearchBar.nativeElement.value = '';
-    this.dataHandlig();
+    this.dataHandlig(this.infos.data);
   }
 
   /*==========================================>>> Searchbar <<<<=====*/
