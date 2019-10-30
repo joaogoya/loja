@@ -1,9 +1,9 @@
-import { Component, OnInit, Input, ElementRef, ViewChild } from "@angular/core";
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 
 @Component({
-  selector: "app-data-table",
-  templateUrl: "./data-table.component.html",
-  styleUrls: ["./data-table.component.scss"]
+  selector: 'app-data-table',
+  templateUrl: './data-table.component.html',
+  styleUrls: ['./data-table.component.scss']
 })
 export class DataTableComponent implements OnInit {
 
@@ -17,7 +17,7 @@ export class DataTableComponent implements OnInit {
   public pageSize = 10;
 
   /*search box*/
-  public term = "";
+  public term = '';
   public hasResult = false;
   public search = false;
   @ViewChild('inputSearchBar', {static: true}) inputSearchBar;
@@ -25,7 +25,6 @@ export class DataTableComponent implements OnInit {
 
   ngOnInit() {
     this.dataHandlig();
-    this.tableSorting();
   }
 
   public dataHandlig() {
@@ -35,10 +34,17 @@ export class DataTableComponent implements OnInit {
     });
   }
 
+  public reload() {
+    this.hasResult = true;
+    this.inputSearchBar.nativeElement.value = '';
+    this.dataHandlig();
+  }
+
+  /*==========================================>>> Searchbar <<<<=====*/
   public searchBar(event) {
     const term = event.target.value;
 
-     // se a barra de pesquisa estiver populada
+     // check if search bar is not empty
     const isEempty = term === undefined || term.trim() === '';
     if (isEempty === false) {
 
@@ -48,15 +54,15 @@ export class DataTableComponent implements OnInit {
       let arrayTemp = [];
       const backspace = event.keyCode === 8;
 
-      // se backspace, reseta this.data
-      if(backspace){
+      // if backspace, reset this.data
+      if (backspace) {
         this.data = [];
         this.infos.data.forEach(element => {
           this.data.push(Object.values(element));
         });
       }
 
-      // filtra
+      // search/filter
       this.data.forEach(item => {
         item.forEach(element => {
           if (element.toString().includes(term)) {
@@ -65,12 +71,12 @@ export class DataTableComponent implements OnInit {
         });
       });
 
-      // remove duplicados
+      // remove duplicate data
       arrayTemp = arrayTemp.filter((item, pos) => {
         return arrayTemp.indexOf(item) === pos;
       });
 
-      // trata informação para a saída
+      // handle informations to output
       if (arrayTemp.length > 0) {
         this.data = [];
         this.data = arrayTemp;
@@ -81,30 +87,28 @@ export class DataTableComponent implements OnInit {
       }
     }
   }
+    /*==========================================>>> End of Searchbar <<<<=====*/
 
-  public reload() {
-    this.hasResult = true;
-    this.inputSearchBar.nativeElement.value = '';
-    this.dataHandlig();
-  }
+  public tableSorting(index) {
 
-  public tableSorting() {
-    function Comparator(a, b) {
-      if (a[0] < b[0]) {
+    // array obj to array of arrays
+    let result = this.infos.data.map(Object.values);
+
+    // sort
+    result = result.sort((a, b) => {
+      if (a[index] < b[index]) {
         return -1;
       }
-      if (a[0] > b[0]) {
+      if (a[index] > b[index]) {
         return 1;
       }
       return 0;
-    }
-    let myArray = [
-      [1, "alfred", "..."],
-      [23, "berta", "..."],
-      [2, "zimmermann", "..."],
-      [4, "albert", "..."]
-    ];
-    myArray = myArray.sort(Comparator);
-    console.log(myArray);
+    });
+
+    // handle informations to output
+    this.data = [];
+    result.forEach(element => {
+      this.data.push(Object.values(element));
+    });
   }
 }
