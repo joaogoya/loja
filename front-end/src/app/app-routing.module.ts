@@ -5,9 +5,17 @@ import { SalesComponent } from './components/sales/sales.component';
 import { ClientsListComponent } from './components/clients/clients-list/clients-list.component';
 
 const routes: Routes = [
-  {path: 'products', component: ProductsListComponent},
   {path: 'sales', component: SalesComponent},
-  {path: 'clients', component: ClientsListComponent}
+  {path: 'clients', component: ClientsListComponent},
+
+  { path: 'products',
+    loadChildren: () => import('./components/products/products.module').then(e => e.ProducsModule)
+  },
+
+  // {
+  //   path: 'dragons',
+  //   loadChildren: './components/dragons/dragon.module#DragonModule'
+  // }
 ];
 
 @NgModule({
