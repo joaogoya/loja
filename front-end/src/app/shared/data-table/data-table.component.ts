@@ -25,6 +25,7 @@ export class DataTableComponent implements OnInit {
 
   ngOnInit() {
     this.dataHandlig();
+    this.tableSorting();
   }
 
   public dataHandlig() {
@@ -35,16 +36,27 @@ export class DataTableComponent implements OnInit {
   }
 
   public searchBar(term) {
+
+    // pre sets
     this.search = true;
     this.term = term;
-    const arrayTemp  = [];
+    let arrayTemp  = [];
+
+    // filtra
     this.data.forEach(item => {
       item.forEach(element => {
-        if(element.toString().includes(term)) {
+        if (element.toString().includes(term)) {
           arrayTemp.push(item);
         }
       });
     });
+
+    // remove duplicados
+    arrayTemp = arrayTemp.filter((item, pos) => {
+      return arrayTemp.indexOf(item) === pos;
+  });
+
+    // trata informação para a saída
     if (arrayTemp.length > 0) {
       this.data = [];
       this.data = arrayTemp;
@@ -55,10 +67,30 @@ export class DataTableComponent implements OnInit {
     }
   }
 
-  public reload(){
+
+
+
+
+
+
+  public reload() {
     this.hasResult = true;
     this.dataHandlig();
   }
 
-
+  public tableSorting() {
+    function Comparator(a, b) {
+      if (a[0] < b[0]) {return -1; }
+      if (a[0] > b[0]) {return 1; }
+      return 0;
+    }
+    let myArray = [
+      [1, 'alfred', '...'],
+      [23, 'berta', '...'],
+      [2, 'zimmermann', '...'],
+      [4, 'albert', '...'],
+    ];
+    myArray = myArray.sort(Comparator);
+    console.log(myArray);
+  }
 }
