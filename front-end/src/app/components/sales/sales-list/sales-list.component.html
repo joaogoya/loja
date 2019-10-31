@@ -1,1 +1,3 @@
-<p>sales-list works!</p>
+<app-spinner *ngIf="spinner"></app-spinner>
+<app-data-table *ngIf="!spinner && success" id="sucess" [infos]='infos'></app-data-table>
+<app-api-error [errorInfos]='error' *ngIf="!spinner && !success"></app-api-error>

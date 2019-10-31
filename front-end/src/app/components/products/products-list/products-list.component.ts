@@ -31,7 +31,7 @@ export class ProductsListComponent implements OnInit {
   private getAll() {
     this.productsService.getAll().subscribe(
       res => {
-        this.infos.data = res;
+        this.infos.data = this.removeAtributes(res);
         this.spinner = false;
         this.success = true;
       },
@@ -43,4 +43,13 @@ export class ProductsListComponent implements OnInit {
     );
   }
 
+  public removeAtributes(res) {
+    return res.filter((item) => {
+        delete item.slug;
+        delete item.__v;
+        delete item.description;
+        delete item.tags;
+        return true;
+    });
+  }
 }

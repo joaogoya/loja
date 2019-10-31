@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Product } from '../../entiets/product';
+import { Sales } from 'src/app/entiets/sales';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductsService {
+export class SalesService {
 
-  private readonly baseUrl = '/api/products';
+  private readonly baseUrl = 'api/order';
 
   constructor( private http: HttpClient ) { }
 
   public getAll() {
-    return this.http.get<Product[]>(this.baseUrl);
+    return this.http.get<Sales[]>(this.baseUrl);
   }
 }

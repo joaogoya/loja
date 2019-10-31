@@ -18,22 +18,36 @@ ainda no modulo de produtos apenas:
 	
 	ordenação da lista - foi
 	
-	fazer os outros componentes consumirem a tabela
+	fazer os outros componentes consumirem a tabela - foi
 		ver como a api entrega
-		tratar no componente e mandar o que a tebela espera pra nao ter que mexer na api
+		tratar no componente e mandar o que a tebela espera pra nao ter que mexer na api 
+	
+		refactoring products - foi
+			na api a model products tem atributos q o get all products nao entrega
+			deu problema no entiet de sales, que entrega todos
+				refatorar a api p entregar toso no get all - foi
+				refatoar a entiet products - foi
+				refatorar a listagem de produtos - foi
+		
+			voltar para sales - foi
+	
+	reutilizar o codiggo dos componentes de listagens
+		os 3 comps estao praticamente iguais
+		
+	
 	
 	
 mondularizar a aplicação	
 	
-	criar os componentes fomrs de cada modulo
-		envolve rotas
+	criar os componentes fomrs de cada modulo - foi
+		envolve rotas - foi
 	
-	modularizar aplicação
-		modulo e rota por modulo
+	modularizar aplicação - foi
+		modulo e rota por modulo - foi
 	
-	carregamento por demanda
+	carregamento por demanda - foi
 		
-	modularizar o shared
+	modularizar o shared - foi
 	
 	gurda rotas
 		canLoad e pg de loginn

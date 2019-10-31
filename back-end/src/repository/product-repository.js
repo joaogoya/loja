@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Product = mongoose.model('Product');
 
 exports.get = () =>{
-    return Product.find({}, 'title price slug');
+    return Product.find({});
 }
 
 exports.getById = (id) => {
