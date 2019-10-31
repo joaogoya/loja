@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SpinnerComponent } from './spinner/spinner.component';
-import { DataTableComponent } from './data-table/data-table.component';
 import { ApiErrorComponent } from './messages/api-error/api-error.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { DataTableComponent } from './data-table/data-table.component';
 
 @NgModule({
   declarations: [
     SpinnerComponent,
-    DataTableComponent,
-    ApiErrorComponent
+    ApiErrorComponent,
+    DataTableComponent
   ],
   imports: [
     CommonModule,
@@ -17,10 +17,10 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
   ],
   exports: [
     SpinnerComponent,
-    DataTableComponent,
     ApiErrorComponent,
-    NgbModule
-],
+    NgbModule,
+    DataTableComponent
+  ],
   providers: []
 })
 export class SharedModule { }

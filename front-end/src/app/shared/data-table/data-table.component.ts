@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Output } from '@angular/core';
+import { BroadcastService } from 'src/app/services/broadcast.service';
 
 @Component({
   selector: 'app-data-table',
@@ -7,8 +8,18 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 })
 export class DataTableComponent implements OnInit {
 
+  /* ========================================================>>> attribute declaration */
+
+  /*VIEW FLAGAS/INTERACT*/
+  public spinner = true;
+  public success = false;
+  public error = {
+    name: '',
+    message: ''
+  };
+
   /*DATA*/
-  @Input() infos;
+  public infos;
   public atributes;
   public data = [];
 
@@ -21,23 +32,48 @@ export class DataTableComponent implements OnInit {
   public hasResult = false;
   public search = false;
   @ViewChild('inputSearchBar', {static: true}) inputSearchBar;
-  constructor() {}
+  /* ========================================================>>> end of attribute declaration */
+
+  constructor( private broadcast: BroadcastService ) {}
 
   ngOnInit() {
-    this.dataHandlig(this.infos.data);
+    this.broadcast.emitData.subscribe( infos => {
+      this.infos = infos;
+      this.dataHandling(infos);
+    });
   }
 
-  public dataHandlig(values) {
+  public dataHandling(infos) {
+    if (infos.success) {
+      this.successHndling(infos.data);
+    } else {
+      this.errorRandling(infos.error);
+    }
+  }
+
+  public successHndling(values) {
+
+    /* change an aarraof objs in to two arrays of strings  */
     this.atributes = Object.keys(values[0]);
     values.forEach(element => {
       this.data.push(Object.values(element));
     });
+
+    // flags
+    this.spinner = false;
+    this.success = true;
+  }
+
+  public errorRandling(err) {
+    this.error.name = err.name;
+    this.error.message = err.message;
+    this.spinner = false;
   }
 
   public reload() {
     this.hasResult = true;
     this.inputSearchBar.nativeElement.value = '';
-    this.dataHandlig(this.infos.data);
+    this.successHndling(this.infos.data);
   }
 
   /*==========================================>>> Searchbar <<<<=====*/

@@ -34,9 +34,7 @@ ainda no modulo de produtos apenas:
 	reutilizar o codiggo dos componentes de listagens
 		os 3 comps estao praticamente iguais
 		
-	
-	
-	
+		
 mondularizar a aplicação	
 	
 	criar os componentes fomrs de cada modulo - foi

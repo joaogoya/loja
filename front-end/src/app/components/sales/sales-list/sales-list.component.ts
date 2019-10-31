@@ -16,8 +16,8 @@ export class SalesListComponent implements OnInit {
   };
 
   public infos = {
-    component: 'products',
-    btnMessage: 'Novo produto',
+    component: 'sales',
+    btnMessage: 'Nova venda',
     data: []
   };
 
@@ -31,7 +31,6 @@ export class SalesListComponent implements OnInit {
     this.salesService.getAll().subscribe(
       res => {
         this.handleProducts(res);
-        console.log(res);
         this.infos.data = this.removeAtributes(res);
         this.spinner = false;
         this.success = true;

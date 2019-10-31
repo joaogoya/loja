@@ -8,7 +8,7 @@ import { MenuComponent } from './shared/menu/menu.component';
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent
+    MenuComponent,
   ],
   imports: [
     BrowserModule,

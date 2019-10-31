@@ -1,5 +1,6 @@
 import { ClientsService } from './../../../services/clients/clients-.service';
 import { Component, OnInit } from '@angular/core';
+import { BroadcastService } from 'src/app/services/broadcast.service';
 
 @Component({
   selector: 'app-clients-list',
@@ -9,37 +10,34 @@ import { Component, OnInit } from '@angular/core';
 
 export class ClientsListComponent implements OnInit {
 
-  public spinner = true;
-  public success = false;
-
-  public error = {
-    name: '',
-    message: ''
-  };
-
   public infos = {
     component: 'clients',
     btnMessage: 'Novo Cliente',
-    data: []
+    data: [],
+    success: true,
+    error: {}
   };
 
-  constructor( private clientsService: ClientsService ) { }
+
+  constructor(
+    private clientsService: ClientsService,
+    private broadcast: BroadcastService
+    ) { }
 
   ngOnInit() {
-    this.getAll();
+    this.getAll(this.infos);
   }
 
-  private getAll() {
+  private getAll(infos) {
     this.clientsService.getAll().subscribe(
       res => {
-        this.infos.data = this.removeAtributes(res);
-        this.spinner = false;
-        this.success = true;
+        infos.data = this.removeAtributes(res);
+        this.broadcast.dataComunication(infos);
       },
       err => {
-        this.spinner = false;
-        this.error.name = err.name;
-        this.error.message = err.message;
+        this.infos.success = false;
+        this.infos.error = err;
+        this.broadcast.dataComunication(infos);
       }
     );
   }
