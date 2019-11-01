@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild, Output } from '@angular/core';
-import { BroadcastService } from 'src/app/services/broadcast.service';
+import { BroadcastService } from 'src/app/services/broadcast/broadcast.service';
 
 @Component({
   selector: 'app-data-table',

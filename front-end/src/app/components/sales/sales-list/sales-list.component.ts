@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SalesService } from './../../../services/sales/sales.service';
+import { BroadcastService } from 'src/app/services/broadcast/broadcast.service';
 
 @Component({
   selector: 'app-sales-list',
@@ -7,38 +8,35 @@ import { SalesService } from './../../../services/sales/sales.service';
   styleUrls: ['./sales-list.component.scss']
 })
 export class SalesListComponent implements OnInit {
-  public spinner = true;
-  public success = false;
-
-  public error = {
-    name: '',
-    message: ''
-  };
 
   public infos = {
     component: 'sales',
     btnMessage: 'Nova venda',
-    data: []
+    data: [],
+    success: true,
+    error: {}
   };
 
-  constructor(private salesService: SalesService) {}
+  constructor(
+    private salesService: SalesService,
+    private broadcast: BroadcastService
+    ) {}
 
   ngOnInit() {
-    this.getAll();
+    this.getAll(this.infos);
   }
 
-  private getAll() {
+  private getAll(infos) {
     this.salesService.getAll().subscribe(
       res => {
         this.handleProducts(res);
         this.infos.data = this.removeAtributes(res);
-        this.spinner = false;
-        this.success = true;
+        this.broadcast.dataComunication(infos);
       },
       err => {
-        this.spinner = false;
-        this.error.name = err.name;
-        this.error.message = err.message;
+        this.infos.success = false;
+        this.infos.error = err;
+        this.broadcast.dataComunication(infos);
       }
     );
   }

@@ -1,6 +1,6 @@
 import { ClientsService } from './../../../services/clients/clients-.service';
 import { Component, OnInit } from '@angular/core';
-import { BroadcastService } from 'src/app/services/broadcast.service';
+import { BroadcastService } from 'src/app/services/broadcast/broadcast.service';
 
 @Component({
   selector: 'app-clients-list',
@@ -17,7 +17,6 @@ export class ClientsListComponent implements OnInit {
     success: true,
     error: {}
   };
-
 
   constructor(
     private clientsService: ClientsService,

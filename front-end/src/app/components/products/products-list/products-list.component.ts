@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../../services/products/products.service';
+import { BroadcastService } from 'src/app/services/broadcast/broadcast.service';
 
 @Component({
   selector: 'app-products-list',
@@ -8,37 +9,33 @@ import { ProductsService } from '../../../services/products/products.service';
 })
 export class ProductsListComponent implements OnInit {
 
-  public spinner = true;
-  public success = false;
-
-  public error = {
-    name: '',
-    message: ''
-  };
-
   public infos = {
     component: 'products',
     btnMessage: 'Novo produto',
-    data: []
+    data: [],
+    success: true,
+    error: {}
   };
 
-  constructor(private productsService: ProductsService) {}
+  constructor(
+    private productsService: ProductsService,
+    private broadcast: BroadcastService
+    ) {}
 
   ngOnInit() {
-    this.getAll();
+    this.getAll(this.infos);
   }
 
-  private getAll() {
+  private getAll(infos) {
     this.productsService.getAll().subscribe(
       res => {
-        this.infos.data = this.removeAtributes(res);
-        this.spinner = false;
-        this.success = true;
+        infos.data = this.removeAtributes(res);
+        this.broadcast.dataComunication(infos);
       },
       err => {
-        this.spinner = false;
-        this.error.name = err.name;
-        this.error.message = err.message;
+        this.infos.success = false;
+        this.infos.error = err;
+        this.broadcast.dataComunication(infos);
       }
     );
   }
