@@ -4,16 +4,20 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './shared/menu/menu.component';
+import { HomeComponent } from './components/home/home.component';
+import { LoginModule } from './components/login/login.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    LoginModule
   ],
   providers: [],
   bootstrap: [AppComponent]

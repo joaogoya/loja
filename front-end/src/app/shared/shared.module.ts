@@ -4,6 +4,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { ApiErrorComponent } from './messages/api-error/api-error.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { DataTableComponent } from './data-table/data-table.component';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { DataTableComponent } from './data-table/data-table.component';
   ],
   imports: [
     CommonModule,
-    NgbModule
+    NgbModule,
+    RouterModule
   ],
   exports: [
     SpinnerComponent,
