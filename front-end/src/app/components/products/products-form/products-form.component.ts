@@ -23,6 +23,8 @@ export class ProductsFormComponent implements OnInit {
   };
 
   public form: FormGroup;
+  public isEdit = false;
+  public id: '';
 
   constructor(
     private productService: ProductsService,
@@ -30,10 +32,11 @@ export class ProductsFormComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private toastr: ToastrService
-    ) {}
+  ) {}
 
   ngOnInit() {
     this.setFormBuilder(this.product);
+    this.fillFromBase();
   }
 
   public setFormBuilder(product: Product) {
@@ -45,6 +48,31 @@ export class ProductsFormComponent implements OnInit {
       slug: [product.slug, Validators.required],
       tags: [product.tags, Validators.required]
     });
+  }
+
+  public fillFromBase() {
+    if (this.activatedRoute.snapshot.params.id) {
+      this.id = this.activatedRoute.snapshot.params.id;
+      this.isEdit = true;
+      this.productService
+        .getById(this.id)
+        .subscribe(
+          res => {
+            this.setFormBuilder(res);
+          },
+          err => {
+            this.toastr.error(
+              'Houve um erro. Contate o administrador do sistema',
+              'Erro.',
+              {
+                progressBar: true,
+                timeOut: 2200
+              }
+            );
+            this.router.navigate(['/products']);
+          }
+        );
+    }
   }
 
   /* css class validations */
@@ -70,29 +98,69 @@ export class ProductsFormComponent implements OnInit {
     });
   }
 
+  public tagsAdjust() {
+    const tags = this.form.get('tags').value.split(';');
+    this.form.controls.tags.patchValue(tags);
+  }
+
   public onSubmit() {
     if (this.form.invalid) {
       this.testFormValid(this.form);
     } else {
-      const tags = this.form.get('tags').value.split(';');
-      this.form.controls.tags.patchValue(tags);
+      if (this.isEdit) {
+        this.tagsAdjust();
+        this.productService.update(this.id, this.form.value).subscribe(
+          res => {
+            this.toastr.success(
+              'Suas informações foram salvas com sucesso.',
+              'Sucesso.',
+              {
+                progressBar: true,
+                timeOut: 1800
+              }
+            );
+            this.router.navigate(['/products']);
+          },
+          err => {
+            this.toastr.error(
+              'Houve um erro. Contate o administrador do sistema',
+              'Erro.',
+              {
+                progressBar: true,
+                timeOut: 2200
+              }
+            );
+          }
+        );
 
-      this.productService.save(this.form.value).subscribe(
-        res => {
-          this.toastr.success('Suas informações foram salvas com sucesso.', 'Sucesso.', {
-            progressBar: true,
-            timeOut: 1800,
-            positionClass: 'bottom-full-width'
-          });
-          this.router.navigate(['/products']);
-        },
-        err => {
-          this.toastr.error( 'Houve um erro. Contate o administrador do sistema', 'Erro.', {
-            progressBar: true,
-            timeOut: 2200,
-          });
-        }
-      );
+
+      } else {
+        this.tagsAdjust();
+
+        this.productService.save(this.form.value).subscribe(
+          res => {
+            this.toastr.success(
+              'Suas informações foram salvas com sucesso.',
+              'Sucesso.',
+              {
+                progressBar: true,
+                timeOut: 1800
+              }
+            );
+            this.router.navigate(['/products']);
+          },
+          err => {
+            this.toastr.error(
+              'Houve um erro. Contate o administrador do sistema',
+              'Erro.',
+              {
+                progressBar: true,
+                timeOut: 2200
+              }
+            );
+          }
+        );
+      }
     }
   }
 }
