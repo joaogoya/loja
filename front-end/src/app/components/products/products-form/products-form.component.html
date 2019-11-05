@@ -1,1 +1,116 @@
-<p>products-form works!</p>
+<div class="card bg-light">
+  <div class="card-header">
+    <h2>Novo produto</h2>
+  </div>
+
+  <div class="card-body">
+    <form [formGroup]="form" class="needs-validation" novalidate>
+      <div class="form-group">
+        <label for="title" [ngClass]="applyCssFeedback('title')">Nome</label>
+        <input
+          type="text"
+          [ngClass]="applyCssFeedback('title')"
+          id="title"
+          name="title"
+          class="form-control"
+          formControlName="title"
+          placeholder="nome"
+          required
+        />
+        <div class="invalid-feedback">Este campo é obrigatório</div>
+      </div>
+
+      <div class="form-group">
+        <label for="price" [ngClass]="applyCssFeedback('price')">Preço</label>
+        <input
+          type="number"
+          id="price"
+          name="price"
+          class="form-control"
+          [ngClass]="applyCssFeedback('price')"
+          formControlName="price"
+          placeholder="Preço"
+          required
+        />
+        <div class="invalid-feedback">Este campo é obrigatório</div>
+      </div>
+
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          [ngClass]="applyCssFeedback('active')"
+          type="checkbox"
+          value=""
+          name="active"
+          id="active"
+          formControlName="active"
+          required
+        />
+        <div class="invalid-feedback">Este campo é obrigatório</div>
+        <label
+          class="form-check-label"
+          [ngClass]="applyCssFeedback('active')"
+          for="name"
+        >
+          Attivo
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Descrição</label>
+        <textarea
+          name="description"
+          [ngClass]="applyCssFeedback('description')"
+          id="description"
+          class="form-control"
+          formControlName="description"
+          cols="30"
+          rows="10"
+          required
+        ></textarea>
+        <div
+          class="invalid-feedback"
+          [ngClass]="applyCssFeedback('description')"
+        >
+          Este campo é obrigatório
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="slug" [ngClass]="applyCssFeedback('slug')">Slug</label>
+        <input
+          type="text"
+          [ngClass]="applyCssFeedback('slug')"
+          id="slug"
+          name="slug"
+          class="form-control"
+          formControlName="slug"
+          placeholder="slug"
+          required
+        />
+        <div class="invalid-feedback">Este campo é obrigatório</div>
+      </div>
+
+      <div class="form-group">
+        <label for="tags" [ngClass]="applyCssFeedback('tags')">Tags</label>
+        <textarea
+          name="tags"
+          [ngClass]="applyCssFeedback('tags')"
+          id="tags"
+          class="form-control"
+          formControlName="tags"
+          cols="30"
+          rows="10"
+          required
+        ></textarea>
+        <div class="invalid-feedback">Este campo é obrigatório</div>
+      </div>
+    </form>
+  </div>
+  <div class="card-footer text-left">
+    <button type="submit" class="btn btn-primary" (click)="onSubmit()">
+      Enviar 
+    </button>
+  </div>
+</div>
+

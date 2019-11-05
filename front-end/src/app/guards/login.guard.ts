@@ -14,17 +14,6 @@ import { Observable } from 'rxjs';
 export class LoginGuard implements CanLoad {
   constructor(private loginService: LoginService, private router: Router) {}
 
-  // canActivate(
-  //   next: ActivatedRouteSnapshot,
-  //   state: RouterStateSnapshot
-  // ): Observable<boolean> | boolean {
-  //   if (this.loginService.guardLogin()) {
-  //     return this.loginService.guardLogin();
-  //   }
-  //   this.router.navigate(['']);
-  //   return false;
-  // }
-
   canLoad(
     route: Route,
     segments: UrlSegment[]): Observable<boolean> | boolean {
