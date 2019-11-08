@@ -1,5 +1,5 @@
 import { Product } from './../../../entiets/product';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProductsService } from 'src/app/services/products/products.service';
@@ -10,6 +10,7 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './products-form.component.html',
   styleUrls: ['./products-form.component.scss']
 })
+
 export class ProductsFormComponent implements OnInit {
   public product: Product = {
     id: '',
@@ -25,6 +26,7 @@ export class ProductsFormComponent implements OnInit {
   public form: FormGroup;
   public isEdit = false;
   public id: '';
+  public titleMsg = 'Novo produto';
 
   constructor(
     private productService: ProductsService,
@@ -54,25 +56,28 @@ export class ProductsFormComponent implements OnInit {
     if (this.activatedRoute.snapshot.params.id) {
       this.id = this.activatedRoute.snapshot.params.id;
       this.isEdit = true;
-      this.productService
-        .getById(this.id)
-        .subscribe(
-          res => {
-            this.setFormBuilder(res);
-          },
-          err => {
-            this.toastr.error(
-              'Houve um erro. Contate o administrador do sistema',
-              'Erro.',
-              {
-                progressBar: true,
-                timeOut: 2200
-              }
-            );
-            this.router.navigate(['/products']);
-          }
-        );
+      this.titleMsg = 'Editar produto';
+      this.productService.getById(this.id).subscribe(
+        res => {
+          this.setFormBuilder(res);
+        },
+        err => {
+          this.toastr.error(
+            'Houve um erro. Contate o administrador do sistema',
+            'Erro.',
+            {
+              progressBar: true,
+              timeOut: 2200
+            }
+          );
+          this.router.navigate(['/products']);
+        }
+      );
     }
+  }
+
+  public deactivateConfirmation(): boolean {
+    return confirm('Você realmente desja sair?');
   }
 
   /* css class validations */
@@ -132,11 +137,8 @@ export class ProductsFormComponent implements OnInit {
             );
           }
         );
-
-
       } else {
         this.tagsAdjust();
-
         this.productService.save(this.form.value).subscribe(
           res => {
             this.toastr.success(
@@ -159,8 +161,8 @@ export class ProductsFormComponent implements OnInit {
               }
             );
           }
-        );
-      }
-    }
+        ); // save.sibscribe
+      } // if is save or edit
+    }// if form valid
   }
 }
