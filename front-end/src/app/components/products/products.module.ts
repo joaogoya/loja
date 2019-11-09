@@ -7,7 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductsFormComponent } from './products-form/products-form.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductsRoutingModule } from './products.routing';
-import { ModalModule } from 'ngx-bootstrap/modal'; 
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [

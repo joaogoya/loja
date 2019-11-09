@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SalesService } from './../../../services/sales/sales.service';
-import { BroadcastService } from 'src/app/services/broadcast/broadcast.service';
+import { UtilsService } from 'src/app/services/utils/utils.service';
 
 @Component({
   selector: 'app-sales-list',
@@ -19,7 +19,7 @@ export class SalesListComponent implements OnInit {
 
   constructor(
     private salesService: SalesService,
-    private broadcast: BroadcastService
+    private utilsService: UtilsService
     ) {}
 
   ngOnInit() {
@@ -31,12 +31,12 @@ export class SalesListComponent implements OnInit {
       res => {
         this.handleProducts(res);
         this.infos.data = this.removeAtributes(res);
-        this.broadcast.dataComunication(infos);
+        this.utilsService.dataComunication(infos);
       },
       err => {
         this.infos.success = false;
         this.infos.error = err;
-        this.broadcast.dataComunication(infos);
+        this.utilsService.dataComunication(infos);
       }
     );
   }

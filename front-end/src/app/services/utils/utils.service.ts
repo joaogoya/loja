@@ -1,28 +1,30 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
-
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
-
+export class UtilsService {
+  public emitData = new EventEmitter();
   public loggerdUser = new EventEmitter<boolean>();
   public userAuth = false;
 
-  constructor( private router: Router ) { }
+  constructor(private router: Router) {}
 
-  public login( user: any ) {
+  public dataComunication(infos) {
+    this.emitData.emit(infos);
+  }
+
+  public login(user: any) {
     if (user.email === 'user' && user.password === '1234') {
       this.loggerdUser.emit(true);
       this.userAuth = true;
-      this.router.navigate(['/products']);
+      this.router.navigate(['/home']);
     }
   }
 
   public guardLogin(): boolean {
-      // return this.userAuth;
-      return true;
+    return this.userAuth;
+    // return true;
   }
-
 }

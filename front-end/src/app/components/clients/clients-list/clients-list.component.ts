@@ -1,6 +1,6 @@
 import { ClientsService } from './../../../services/clients/clients-.service';
 import { Component, OnInit } from '@angular/core';
-import { BroadcastService } from 'src/app/services/broadcast/broadcast.service';
+import { UtilsService } from 'src/app/services/utils/utils.service';
 
 @Component({
   selector: 'app-clients-list',
@@ -20,7 +20,7 @@ export class ClientsListComponent implements OnInit {
 
   constructor(
     private clientsService: ClientsService,
-    private broadcast: BroadcastService
+    private utilsService: UtilsService
     ) { }
 
   ngOnInit() {
@@ -31,12 +31,12 @@ export class ClientsListComponent implements OnInit {
     this.clientsService.getAll().subscribe(
       res => {
         infos.data = this.removeAtributes(res);
-        this.broadcast.dataComunication(infos);
+        this.utilsService.dataComunication(infos);
       },
       err => {
         this.infos.success = false;
         this.infos.error = err;
-        this.broadcast.dataComunication(infos);
+        this.utilsService.dataComunication(infos);
       }
     );
   }

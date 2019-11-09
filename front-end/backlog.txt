@@ -49,23 +49,7 @@ mondularizar a aplicação
 	
 	gurda rotas
 		canLoad e pg de loginn - foi
-		resolve	
-		canDeactivate nos forms
-		
-
-canDeactivate
-		
-
-	
-toaster compartilhado
-		toaster na tabela
-
-modulo home
-
-dadoos da tabela no local storage pra naoficar toda hora indo na api
-	qd for crud, dai sim, ir na api e atualizar o local storage
-
-
+		canDeactivate nos forms - products foi
 
 		
 Cruds
@@ -76,16 +60,25 @@ Cruds
 		toaster compartilhado
 		
 		campo control no shared
+		
+		modal deactivate compartilhada
 	
 	deletes
 		modal confirmation compartilhada
 		
 		acionar api
 		
-
-
-
-
+modulo home
+	pra rediocinar os toasters de erro
+	
+classes broadcast e data table
+	criar classe utils
+		colocar o broadcast e o login ali
+		broadcast:
+			products
+			clients
+			sales
+			dataTabel
 
 		
 testar funções
@@ -93,7 +86,8 @@ testar funções
 escrever kit ui
 
 
-
+dadoos da tabela no local storage pra naoficar toda hora indo na api
+	qd for crud, dai sim, ir na api e atualizar o local storage
 
 
 

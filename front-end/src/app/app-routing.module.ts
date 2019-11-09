@@ -1,13 +1,19 @@
 import { LoginGuard } from './guards/login.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
 
   {
     path: '',
-    redirectTo: 'products/form',
+    redirectTo: 'login',
     pathMatch: 'full'
+  },
+
+  { path: 'home',
+    canActivate: [LoginGuard],
+    component: HomeComponent
   },
 
   { path: 'login',

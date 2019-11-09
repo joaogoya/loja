@@ -96,16 +96,16 @@ export class ProductsFormComponent implements OnInit {
     });
   }
 
-  
+
   /* modal deactivate functions */
   showModal(): void {
     this.isModalShown = true;
   }
- 
+
   hideModal(): void {
     this.autoShownModal.hide();
   }
- 
+
   onHidden(): void {
     this.isModalShown = false;
   }
@@ -128,7 +128,7 @@ export class ProductsFormComponent implements OnInit {
     );
     this.router.navigate(['/products']);
   }
-  
+
   public toasterError() {
     this.toastr.error(
       'Houve um erro. Contate o administrador do sistema',
@@ -138,7 +138,7 @@ export class ProductsFormComponent implements OnInit {
         timeOut: 2200
       }
     );
-    this.router.navigate(['/products']);
+    this.router.navigate(['/home']);
   }
 
   public tagsAdjust() {

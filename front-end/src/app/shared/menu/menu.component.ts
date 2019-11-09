@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { LoginService } from 'src/app/services/login/login.service';
+import { UtilsService } from 'src/app/services/utils/utils.service';
 
 @Component({
   selector: 'app-menu',
@@ -8,17 +8,17 @@ import { LoginService } from 'src/app/services/login/login.service';
 })
 export class MenuComponent implements OnInit, OnDestroy {
 
-  constructor( private loginService: LoginService ) { }
+  constructor( private utilsService: UtilsService ) { }
 
   public showMenu = false;
 
   ngOnInit() {
-    this.loginService.loggerdUser.subscribe( e => {
+    this.utilsService.loggerdUser.subscribe( e => {
       this.showMenu = true;
     });
   }
 
   ngOnDestroy() {
-    this.loginService.loggerdUser.unsubscribe();
+    this.utilsService.loggerdUser.unsubscribe();
   }
 }

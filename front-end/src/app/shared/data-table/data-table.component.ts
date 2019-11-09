@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild, Output } from '@angular/core';
-import { BroadcastService } from 'src/app/services/broadcast/broadcast.service';
+import { UtilsService } from 'src/app/services/utils/utils.service';
 
 @Component({
   selector: 'app-data-table',
@@ -34,10 +34,10 @@ export class DataTableComponent implements OnInit {
   @ViewChild('inputSearchBar', {static: true}) inputSearchBar;
   /* ========================================================>>> end of attribute declaration */
 
-  constructor( private broadcast: BroadcastService ) {}
+  constructor( private utilsService: UtilsService ) {}
 
   ngOnInit() {
-    this.broadcast.emitData.subscribe( infos => {
+    this.utilsService.emitData.subscribe( infos => {
       this.infos = infos;
       this.dataHandling(infos);
     });
