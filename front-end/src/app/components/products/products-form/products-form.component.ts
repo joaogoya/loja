@@ -1,18 +1,17 @@
 import { Product } from './../../../entiets/product';
 import { Component, OnInit, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from 'src/app/services/products/products.service';
-import { ToastrService } from 'ngx-toastr';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { ViewChild } from '@angular/core';
+import { UtilsService } from 'src/app/services/utils/utils.service';
 
 @Component({
   selector: 'app-products-form',
   templateUrl: './products-form.component.html',
   styleUrls: ['./products-form.component.scss']
 })
-
 export class ProductsFormComponent implements OnInit {
   public product: Product = {
     id: '',
@@ -30,16 +29,20 @@ export class ProductsFormComponent implements OnInit {
   public id: '';
   public titleMsg = 'Novo produto';
 
-  @ViewChild('autoShownModal', { static: false }) autoShownModal: ModalDirective;
+  @ViewChild('autoShownModal', { static: false })
+  autoShownModal: ModalDirective;
   public isModalShown = false;
   public formChange = false;
+  public navigateRoute = '/products';
+
+  public showToaster = false;
+  public toasterInfos = {};
 
   constructor(
     private productService: ProductsService,
     private formBuilder: FormBuilder,
-    private router: Router,
     private activatedRoute: ActivatedRoute,
-    private toastr: ToastrService
+    private utilsService: UtilsService
   ) {}
 
   ngOnInit() {
@@ -67,78 +70,37 @@ export class ProductsFormComponent implements OnInit {
       this.isEdit = true;
       this.titleMsg = 'Editar produto';
       this.productService.getById(this.id).subscribe(
-        res => { this.setFormBuilder(res); },
-        err => { this.toasterError(); }
+        res => {},
+        err => {
+          this.toasterMsg(false);
+        }
       );
     }
   }
 
   /* css class validations functions */
-  private testsValidField(campo) {
-    return this.form.get(campo).valid && this.form.get(campo).touched;
+  public applyCssFeedback(input) {
+    return this.utilsService.applyCssFeedback(input, this.form);
   }
-  public applyCssFeedback(campo) {
-    if (this.form.get(campo).touched) {
-      return {
-        'is-invalid': !this.testsValidField(campo),
-        'is-valid': this.testsValidField(campo),
-        'has-feedback': this.form.get(campo).touched
-      };
-    }
-  }
-  private testFormValid(formGrup: FormGroup) {
-    Object.keys(formGrup.controls).forEach(campo => {
-      const controle = formGrup.get(campo);
-      controle.markAsTouched();
-      if (controle instanceof FormGroup) {
-        this.testFormValid(controle);
-      }
-    });
-  }
-
 
   /* modal deactivate functions */
-  showModal(): void {
-    this.isModalShown = true;
-  }
-
-  hideModal(): void {
-    this.autoShownModal.hide();
-  }
-
-  onHidden(): void {
-    this.isModalShown = false;
-  }
-
-  onChanges(): void {
-    this.form.valueChanges.subscribe(val => {
+  public onChanges(): void {
+    this.form.valueChanges.subscribe(() => {
       this.formChange = true;
     });
   }
 
-  /* submission form functions */
-  public toasterSuccess() {
-    this.toastr.success(
-      'Suas informações foram salvas com sucesso.',
-      'Sucesso.',
-      {
-        progressBar: true,
-        timeOut: 1800
-      }
-    );
-    this.router.navigate(['/products']);
+  public showModal() {
+    this.isModalShown = true;
   }
 
-  public toasterError() {
-    this.toastr.error(
-      'Houve um erro. Contate o administrador do sistema',
-      'Erro.',
-      {
-        progressBar: true,
-        timeOut: 2200
-      }
-    );
-    this.router.navigate(['/home']);
+  /* submission form functions */
+  public toasterMsg(succes: boolean) {
+    this.toasterInfos = {
+      success: succes,
+      route: this.navigateRoute
+    };
+    this.showToaster = true;
   }
 
   public tagsAdjust() {
@@ -148,21 +110,29 @@ export class ProductsFormComponent implements OnInit {
 
   public onSubmit() {
     if (this.form.invalid) {
-      this.testFormValid(this.form);
+      this.utilsService.testFormValid(this.form);
     } else {
       if (this.isEdit) {
         this.tagsAdjust();
         this.productService.update(this.id, this.form.value).subscribe(
-          res => { this.toasterSuccess(); },
-          err => { this.toasterError(); }
+          res => {
+            this.toasterMsg(true);
+          },
+          err => {
+            this.toasterMsg(false);
+          }
         );
       } else {
         this.tagsAdjust();
         this.productService.save(this.form.value).subscribe(
-          res => { this.toasterSuccess(); },
-          err => { this.toasterError(); }
+          res => {
+            this.toasterMsg(true);
+          },
+          err => {
+            this.toasterMsg(false);
+          }
         ); // save.sibscribe
       } // if is save or edit
-    }// if form valid
+    } // if form valid
   }
 }

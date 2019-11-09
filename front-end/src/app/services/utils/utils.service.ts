@@ -1,3 +1,4 @@
+import { FormGroup } from '@angular/forms';
 import { Injectable, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -24,7 +25,32 @@ export class UtilsService {
   }
 
   public guardLogin(): boolean {
-    return this.userAuth;
-    // return true;
+    // return this.userAuth;
+    return true;
   }
+
+  public applyCssFeedback(input, form) {
+    if (form.get(input).touched) {
+      return {
+        'is-invalid': !this.testsValidField(input, form),
+        'is-valid': this.testsValidField(input, form),
+        'has-feedback': form.get(input).touched
+      };
+    }
+  }
+
+  public testsValidField(input, form) {
+    return form.get(input).valid && form.get(input).touched;
+  }
+
+  public testFormValid(formGrup: FormGroup) {
+    Object.keys(formGrup.controls).forEach(campo => {
+      const controle = formGrup.get(campo);
+      controle.markAsTouched();
+      if (controle instanceof FormGroup) {
+        this.testFormValid(controle);
+      }
+    });
+  }
+
 }
