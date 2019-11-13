@@ -22,7 +22,7 @@ export class ToasterComponent implements OnInit {
 
   public showSuccess() {
     this.toastr.success(
-      'Suas informações foram salvas com sucesso.',
+      'Ação realizada com sucesso.',
       'Sucesso.',
       {
         progressBar: true,

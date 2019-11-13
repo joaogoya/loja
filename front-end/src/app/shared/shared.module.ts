@@ -8,6 +8,7 @@ import {RouterModule} from '@angular/router';
 import { ToasterComponent } from './toaster/toaster.component';
 import { DeactivateModalComponent } from './deactivate-modal/deactivate-modal.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { DeleteModalComponent } from './delete-modal/delete-modal.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     ApiErrorComponent,
     DataTableComponent,
     ToasterComponent,
-    DeactivateModalComponent
+    DeactivateModalComponent,
+    DeleteModalComponent
   ],
   imports: [
     CommonModule,

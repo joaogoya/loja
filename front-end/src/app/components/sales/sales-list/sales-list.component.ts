@@ -1,3 +1,4 @@
+import { Product } from './../../../entiets/product';
 import { Component, OnInit } from '@angular/core';
 import { SalesService } from './../../../services/sales/sales.service';
 import { UtilsService } from 'src/app/services/utils/utils.service';
@@ -57,8 +58,12 @@ export class SalesListComponent implements OnInit {
       item.customer = item.customer.name;
       productsNames = [];
       item.items.map(e => {
-        productsNames.push(e.product.title);
-        item.items = productsNames.join('; ');
+        if (e.product) {
+          productsNames.push(e.product.title);
+          item.items = productsNames.join('; ');
+        } else {
+          productsNames = ['sem produtos cadastrados.']
+        }
       });
     });
   }

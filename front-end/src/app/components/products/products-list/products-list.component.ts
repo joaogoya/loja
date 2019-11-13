@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../../services/products/products.service';
 import { UtilsService } from 'src/app/services/utils/utils.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products-list',
@@ -17,13 +18,18 @@ export class ProductsListComponent implements OnInit {
     error: {}
   };
 
+  public showToaster = false;
+  public toasterInfos = {};
+
   constructor(
     private productsService: ProductsService,
-    private utilsService: UtilsService
+    private utilsService: UtilsService,
+    private router: Router
     ) {}
 
   ngOnInit() {
     this.getAll(this.infos);
+    this.deleteSubscribe();
   }
 
   private getAll(infos) {
@@ -47,6 +53,33 @@ export class ProductsListComponent implements OnInit {
         delete item.description;
         delete item.tags;
         return true;
+    });
+  }
+
+  /* submission form functions */
+  public toasterMsg(succes: boolean) {
+    this.getAll(this.infos);
+    this.toasterInfos = {
+      success: succes,
+      route: 'products'
+    };
+    this.showToaster = true;
+  }
+
+  public deleteSubscribe() {
+    this.utilsService.deleteItem.subscribe(e => {
+      this.showToaster = false;
+      const id = e.data[2];
+      if (e.component === 'products') {
+        this.productsService.delete(id).subscribe(
+          res => {
+            this.toasterMsg(true);
+          },
+          err => {
+            this.toasterMsg(false);
+          }
+        );
+      }
     });
   }
 }

@@ -7,7 +7,7 @@ const routes: Routes = [
 
   {
     path: '',
-    redirectTo: 'products/form',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
 

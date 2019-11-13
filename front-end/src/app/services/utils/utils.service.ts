@@ -7,15 +7,27 @@ import { Router } from '@angular/router';
 })
 export class UtilsService {
   public emitData = new EventEmitter();
+  public closeModal = new EventEmitter();
+  public deleteItem = new EventEmitter();
   public loggerdUser = new EventEmitter<boolean>();
   public userAuth = false;
 
   constructor(private router: Router) {}
 
+  /* components and data table comunication functions */
   public dataComunication(infos) {
     this.emitData.emit(infos);
   }
 
+  public cloeErrorModal() {
+    this.closeModal.emit(false);
+  }
+
+  public delete(obj: any) {
+    this.deleteItem.emit(obj);
+  }
+
+  /* login functions */
   public login(user: any) {
     if (user.email === 'user' && user.password === '1234') {
       this.loggerdUser.emit(true);
@@ -25,10 +37,11 @@ export class UtilsService {
   }
 
   public guardLogin(): boolean {
-    // return this.userAuth;
-    return true;
+    return this.userAuth;
+    // return true;
   }
 
+  /* forms error msgs functions */
   public applyCssFeedback(input, form) {
     if (form.get(input).touched) {
       return {

@@ -1,0 +1,36 @@
+<div
+  *ngIf="isModalShown"
+  [config]="{ show: true }"
+  (onHidden)="onHidden()"
+  bsModal
+  #autoShownModal="bs-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="dialog-auto-name"
+>
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header bg-danger text-light ">
+        <h4 id="dialog-auto-name" class="modal-title pull-left text-center">
+          Atenção.
+        </h4>
+      </div>
+      <div class="modal-body">
+        <p>
+          Você realmente quer deletar o produto:
+        </p>
+        <p class="text-danger">
+          <b>{{ toDelete.data[2] }}</b>
+        </p>
+        <hr />
+        <button type="button" class="btn btn-secondary" (click)="hideModal()">
+          Cancelar
+        </button>
+        <button type="button" class="btn btn-danger pull-right" (click)="onDelete()">
+          Deletar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -12,8 +12,6 @@ export class ApiErrorComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('erro');
-    console.log(this.errorInfos);
   }
 
 }

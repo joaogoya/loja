@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, Output } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UtilsService } from 'src/app/services/utils/utils.service';
 
 @Component({
@@ -23,6 +23,13 @@ export class DataTableComponent implements OnInit {
   public atributes;
   public data = [];
 
+  /* delete item */
+  public showDelteModal = false;
+  public itemToDelete = {
+    component: '',
+    data: ''
+  }
+
   /*PAGINATION*/
   public page = 1;
   public pageSize = 10;
@@ -39,7 +46,11 @@ export class DataTableComponent implements OnInit {
   ngOnInit() {
     this.utilsService.emitData.subscribe( infos => {
       this.infos = infos;
+      this.itemToDelete.component = this.infos.component;
       this.dataHandling(infos);
+    });
+    this.utilsService.closeModal.subscribe(e => {
+      this.showDelteModal = e;
     });
   }
 
@@ -53,7 +64,8 @@ export class DataTableComponent implements OnInit {
 
   public successHndling(values) {
 
-    /* change an aarraof objs in to two arrays of strings  */
+    /* change an aarraof objs in to two arrays of strings */
+    this.data = [];
     this.atributes = Object.keys(values[0]);
     values.forEach(element => {
       this.data.push(Object.values(element));
@@ -75,6 +87,12 @@ export class DataTableComponent implements OnInit {
     this.inputSearchBar.nativeElement.value = '';
     this.successHndling(this.infos.data);
   }
+
+  public onDelete(item: any) {
+    this.showDelteModal = true;
+    this.itemToDelete.data = item;
+  }
+
 
   /*==========================================>>> Searchbar <<<<=====*/
   public searchBar(event) {

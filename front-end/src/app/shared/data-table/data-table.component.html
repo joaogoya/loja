@@ -63,7 +63,7 @@
             <button [routerLink] ="['form', item[1]]" class="btn btn-success">
               <i class="fa fa-pencil-square-o"></i>
             </button>
-            <button class="btn btn-danger deleteData">
+            <button class="btn btn-danger deleteData" (click)="onDelete(item)">
               <i class="fa fa-trash-o"></i>
             </button>
           </td>
@@ -125,3 +125,5 @@
   [errorInfos]="error"
   *ngIf="!spinner && !success"
 ></app-api-error>
+
+<app-delete-modal *ngIf="showDelteModal" [item]="itemToDelete" ></app-delete-modal>

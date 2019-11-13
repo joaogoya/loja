@@ -70,10 +70,8 @@ export class ProductsFormComponent implements OnInit {
       this.isEdit = true;
       this.titleMsg = 'Editar produto';
       this.productService.getById(this.id).subscribe(
-        res => {},
-        err => {
-          this.toasterMsg(false);
-        }
+        res => { this.setFormBuilder(res); },
+        err => { this.toasterMsg(false); }
       );
     }
   }
