@@ -60,7 +60,7 @@
             {{ item[i] }}
           </td>
           <td>
-            <button [routerLink] ="['form', item[1]]" class="btn btn-success">
+            <button [routerLink] ="['form', item[0]]" class="btn btn-success">
               <i class="fa fa-pencil-square-o"></i>
             </button>
             <button class="btn btn-danger deleteData" (click)="onDelete(item)">

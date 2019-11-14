@@ -48,6 +48,7 @@ export class ProductsListComponent implements OnInit {
 
   public removeAtributes(res) {
     return res.filter((item) => {
+        delete item.active,
         delete item.slug;
         delete item.__v;
         delete item.description;

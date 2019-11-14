@@ -77,33 +77,34 @@ exports.put = (req, res, next) => {
   let contract = new ValidationContract();
   const infos = {
     id: req.params.id,
-    name: req.params.name,
+    name: req.body.name,
     email: req.body.email,
-    password: req.body.password
+    password: req.body.password,
+    slug: req.body.slug
   };
 
-  // name validation
-  contract.isRequired(infos.name, 'O campo nome é obrigatório.');
-  contract.hasMinLen(infos.name, 3, 'O campo nome precisa ter no mínimo 3 caracteres.');
-  contract.hasMaxLen(infos.name, 80, 'O campo nome é precisa ter no máximo 80 caracteres.');
+  // // name validation
+  // contract.isRequired(infos.name, 'O campo nome é obrigatório.');
+  // contract.hasMinLen(infos.name, 3, 'O campo nome precisa ter no mínimo 3 caracteres.');
+  // contract.hasMaxLen(infos.name, 80, 'O campo nome é precisa ter no máximo 80 caracteres.');
 
-  // email validation
-  contract.isRequired(infos.email, 'O campo email é obrigatório.');
-  contract.isEmail(infos.email, 'O campo email precisa ser um email válido.');
+  // // email validation
+  // contract.isRequired(infos.email, 'O campo email é obrigatório.');
+  // contract.isEmail(infos.email, 'O campo email precisa ser um email válido.');
 
-  // password validation
-  contract.isRequired(infos.password, 'O campo password é obrigatório.');
-  contract.hasMinLen(infos.password, 6, 'O campo password precisa ter no mínimo 6 caracteres.');
-  contract.hasMaxLen(infos.password, 10, 'O campo password é precisa ter no máximo 10 caracteres.');
+  // // password validation
+  // contract.isRequired(infos.password, 'O campo password é obrigatório.');
+  // contract.hasMinLen(infos.password, 6, 'O campo password precisa ter no mínimo 6 caracteres.');
+  // contract.hasMaxLen(infos.password, 10, 'O campo password é precisa ter no máximo 10 caracteres.');
 
-  // slug validation
-  contract.isRequired(infos.slug, 'O campo slug é obrigatório.');
+  // // slug validation
+  // contract.isRequired(infos.slug, 'O campo slug é obrigatório.');
 
-  // Se os dados forem inválidos
-  if (!contract.isValid()) {
-    res.status(400).send(contract.errors()).end();
-    return;
-  }
+  // // Se os dados forem inválidos
+  // if (!contract.isValid()) {
+  //   res.status(400).send(contract.errors()).end();
+  //   return;
+  // }
 
   // atualiza e retorna
   repository.update(infos)

@@ -2,6 +2,7 @@ import { ClientsService } from './../../../services/clients/clients-.service';
 import { UtilsService } from 'src/app/services/utils/utils.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-clients-form',
@@ -13,7 +14,10 @@ export class ClientsFormComponent implements OnInit {
   public form: FormGroup;
   public toasterInfos = {};
   public showToaster;
-  public isEdit;
+  public isEdit = false;
+  public formChange = false;
+  public id = '';
+  public titleMsg = 'Novo cliente';
 
   public client = {
     name: '',
@@ -25,11 +29,13 @@ export class ClientsFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private utilsService: UtilsService,
-    private clientService: ClientsService
+    private clienstService: ClientsService,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this.setFormBuilder(this.client);
+    this.fillFromBase();
   }
 
   public setFormBuilder(client) {
@@ -39,6 +45,20 @@ export class ClientsFormComponent implements OnInit {
       password: [client.password, Validators.required],
       slug: [client.slug, Validators.required]
     });
+  }
+
+  public fillFromBase() {
+    if (this.activatedRoute.snapshot.params.id) {
+      this.formChange = true;
+      this.isEdit = true;
+      this.id = this.activatedRoute.snapshot.params.id;
+      this.isEdit = true;
+      this.titleMsg = 'Editar produto';
+      this.clienstService.getById(this.id).subscribe(
+        res => { this.setFormBuilder(res); },
+        err => { this.toasterMsg(false); }
+      );
+    }
   }
 
   public applyCssFeedback(input) {
@@ -59,18 +79,17 @@ export class ClientsFormComponent implements OnInit {
       this.utilsService.testFormValid(this.form);
     } else {
       if (this.isEdit) {
-        // this.tagsAdjust();
-        // this.productService.update(this.id, this.form.value).subscribe(
-        //   res => {
-        //     this.toasterMsg(true);
-        //   },
-        //   err => {
-        //     this.toasterMsg(false);
-        //   }
-        // );
+        this.clienstService.update(this.id, this.form.value).subscribe(
+          res => {
+            this.toasterMsg(true);
+          },
+          err => {
+            this.toasterMsg(false);
+          }
+        );
       } else {
         // this.tagsAdjust();
-        this.clientService.save(this.form.value).subscribe(
+        this.clienstService.save(this.form.value).subscribe(
           res => {
             this.toasterMsg(true);
           },

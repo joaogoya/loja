@@ -19,6 +19,8 @@ exports.update = (infos) => {
       $set:{
         email: infos.email,
         password: infos.password,
+        slug: infos.slug,
+        name: infos.name,
       }
     })
 }

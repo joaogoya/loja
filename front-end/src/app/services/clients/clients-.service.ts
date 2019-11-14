@@ -20,4 +20,16 @@ export class ClientsService {
     public save(client: ClientBase) {
       return this.http.post<ClientBase>(this.baseUrl, client);
     }
+
+    public getById(id: string) {
+      return this.http.get<Client>(this.baseUrl + '/id/' + id);
+    }
+
+    public update(id: string, client: ClientBase) {
+      return this.http.put<ClientBase>(this.baseUrl + '/' + id, client);
+    }
+
+    public delete(id: string) {
+      return this.http.delete(this.baseUrl + '/' + id);
+    }
 }
