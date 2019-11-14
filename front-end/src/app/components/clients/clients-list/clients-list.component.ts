@@ -18,6 +18,9 @@ export class ClientsListComponent implements OnInit {
     error: {}
   };
 
+  public showToaster = false;
+  public toasterInfos = {};
+
   constructor(
     private clientsService: ClientsService,
     private utilsService: UtilsService
@@ -25,6 +28,7 @@ export class ClientsListComponent implements OnInit {
 
   ngOnInit() {
     this.getAll(this.infos);
+    this.deleteSubscribe();
   }
 
   private getAll(infos) {
@@ -48,4 +52,31 @@ export class ClientsListComponent implements OnInit {
         return true;
     });
   }
+
+  public toasterMsg(succes: boolean) {
+    this.getAll(this.infos);
+    this.toasterInfos = {
+      success: succes,
+      route: 'clients'
+    };
+    this.showToaster = true;
+  }
+
+  public deleteSubscribe() {
+    this.utilsService.deleteItem.subscribe(e => {
+      this.showToaster = false;
+      const id = e.data[2];
+      if (e.component === 'clients') {
+        this.clientsService.delete(id).subscribe(
+          res => {
+            this.toasterMsg(true);
+          },
+          err => {
+            this.toasterMsg(false);
+          }
+        );
+      }
+    });
+  }
+
 }
