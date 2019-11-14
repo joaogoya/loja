@@ -18,6 +18,9 @@ export class ClientsFormComponent implements OnInit {
   public formChange = false;
   public id = '';
   public titleMsg = 'Novo cliente';
+  public isModalShown = false;
+  public navigateRoute = '/clients';
+
 
   public client = {
     name: '',
@@ -65,10 +68,20 @@ export class ClientsFormComponent implements OnInit {
     return this.utilsService.applyCssFeedback(input, this.form);
   }
 
+  public onChanges(): void {
+    this.form.valueChanges.subscribe(() => {
+      this.formChange = true;
+    });
+  }
+
+  public showModal() {
+    this.isModalShown = true;
+  }
+
   public toasterMsg(succes: boolean) {
     this.toasterInfos = {
       success: succes,
-      route: '/clients'
+      route: this.navigateRoute
     };
     this.showToaster = true;
   }

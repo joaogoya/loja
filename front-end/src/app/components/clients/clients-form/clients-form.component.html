@@ -5,7 +5,18 @@
         <h2 class="card-title">{{ titleMsg }}</h2>
       </div>
       <div class="col-4">
-        <button class="btn btn-info float-right">
+          <button
+          (click)="showModal()"
+          *ngIf="formChange"
+          class="btn btn-info float-right"
+        >
+          Voltar para a lista
+        </button>
+        <button
+          [routerLink]="['/products']"
+          *ngIf="!formChange"
+          class="btn btn-info float-right"
+        >
           Voltar para a lista
         </button>
       </div>
@@ -87,5 +98,10 @@
     </button>
   </div>
 </div>
+
+<app-deactivate-modal
+  *ngIf="isModalShown"
+  [navigateRoute]="navigateRoute"
+></app-deactivate-modal>
 
 <app-toaster *ngIf="showToaster" [infos]="toasterInfos"></app-toaster>
