@@ -1,5 +1,5 @@
 import { Product } from './../../../entiets/product';
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from 'src/app/services/products/products.service';
@@ -30,7 +30,7 @@ export class ProductsFormComponent implements OnInit {
   public titleMsg = 'Novo produto';
 
   @ViewChild('autoShownModal', { static: false })
-  autoShownModal: ModalDirective;
+  public autoShownModal: ModalDirective;
   public isModalShown = false;
   public formChange = false;
   public navigateRoute = '/products';

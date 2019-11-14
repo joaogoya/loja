@@ -37,8 +37,8 @@ export class UtilsService {
   }
 
   public guardLogin(): boolean {
-    return this.userAuth;
-    // return true;
+    // return this.userAuth;
+    return true;
   }
 
   /* forms error msgs functions */

@@ -1,3 +1,4 @@
+import { ClientBase } from './../../entiets/clientsBase';
 import { Client } from '../../entiets/clients';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -14,5 +15,9 @@ export class ClientsService {
 
     public getAll() {
       return this.http.get<Client[]>(this.baseUrl);
+    }
+
+    public save(client: ClientBase) {
+      return this.http.post<ClientBase>(this.baseUrl, client);
     }
 }

@@ -106,8 +106,14 @@ exports.put = (req, res, next) => {
   const product = {
     id: req.params.id,
     title: req.body.title,
-    price: req.body.price
+    price: req.body.price,
+    slug: req.body.slug,
+    description: req.body.description,
+    tags: req.body.tags
   };
+  console.table(product);
+
+  //const product = req.body;
 
   let contract = new ValidationContract();
 

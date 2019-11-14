@@ -1,1 +1,91 @@
-<p>clients-form works!</p>
+<div class="card">
+  <div class="card-header">
+    <div class="row">
+      <div class="col-8">
+        <h2 class="card-title">Novo cliente</h2>
+      </div>
+      <div class="col-4">
+        <button class="btn btn-info float-right">
+          Voltar para a lista
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="form">
+      <div class="form-group">
+        <label for="name" [ngClass]="applyCssFeedback('name')">Nome</label>
+        <input
+          type="text"
+          [ngClass]="applyCssFeedback('name')"
+          id="name"
+          name="name"
+          class="form-control"
+          formControlName="name"
+          placeholder="nome"
+          required
+        />
+        <div class="invalid-feedback">Este campo é obrigatório</div>
+      </div>
+
+      <div class="form-group">
+        <label for="email" [ngClass]="applyCssFeedback('email')">E-mail</label>
+        <input
+          type="text"
+          [ngClass]="applyCssFeedback('email')"
+          id="email"
+          name="email"
+          class="form-control"
+          formControlName="email"
+          placeholder="e-mail"
+          required
+        />
+        <div class="invalid-feedback">Este campo é obrigatório</div>
+      </div>
+
+      <div class="form-group">
+        <label for="slug" [ngClass]="applyCssFeedback('slug')">Apelido</label>
+        <input
+          type="text"
+          [ngClass]="applyCssFeedback('slug')"
+          id="slug"
+          name="slug"
+          class="form-control"
+          formControlName="slug"
+          placeholder="apelido"
+          required
+        />
+        <div class="invalid-feedback">Este campo é obrigatório</div>
+      </div>
+
+      <div class="form-group">
+        <label for="password" [ngClass]="applyCssFeedback('password')"
+          >Senha</label
+        >
+        <input
+          type="text"
+          [ngClass]="applyCssFeedback('password')"
+          id="password"
+          name="password"
+          class="form-control"
+          formControlName="password"
+          placeholder="senha"
+          required
+        />
+        <div class="invalid-feedback">Este campo é obrigatório</div>
+      </div>
+    </form>
+  </div>
+
+  <div class="card-footer text-left">
+    <button
+      type="submit"
+      class="btn btn-success float-right"
+      (click)="onSubmit()"
+    >
+      Enviar
+    </button>
+  </div>
+</div>
+
+<app-toaster *ngIf="showToaster" [infos]="toasterInfos"></app-toaster>
