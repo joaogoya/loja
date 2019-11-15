@@ -1,0 +1,13 @@
+:host {
+  th { 
+    position: sticky; 
+    top: 0; 
+    z-index: 10;
+  }
+  table {
+    height: 200px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: block;
+  }
+}
