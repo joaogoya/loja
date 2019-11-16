@@ -18,6 +18,9 @@ export class SalesListComponent implements OnInit {
     error: {}
   };
 
+  public showToaster = false;
+  public toasterInfos = {};
+
   constructor(
     private salesService: SalesService,
     private utilsService: UtilsService
@@ -25,6 +28,7 @@ export class SalesListComponent implements OnInit {
 
   ngOnInit() {
     this.getAll(this.infos);
+    this.deleteSubscribe();
   }
 
   private getAll(infos) {
@@ -65,6 +69,33 @@ export class SalesListComponent implements OnInit {
           productsNames = ['sem produtos cadastrados.']
         }
       });
+    });
+  }
+
+  public toasterMsg(succes: boolean) {
+    this.getAll(this.infos);
+    this.toasterInfos = {
+      success: succes,
+      route: 'sales'
+    };
+    this.showToaster = true;
+  }
+
+
+  public deleteSubscribe() {
+    this.utilsService.deleteItem.subscribe(e => {
+      this.showToaster = false;
+      const id = e.data[0];
+      if (e.component === 'sales') {
+        this.salesService.delete(id).subscribe(
+          res => {
+            this.toasterMsg(true);
+          },
+          err => {
+            this.toasterMsg(false);
+          }
+        );
+      }
     });
   }
 }
