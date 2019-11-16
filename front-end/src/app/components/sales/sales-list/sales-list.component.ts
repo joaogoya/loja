@@ -47,7 +47,7 @@ export class SalesListComponent implements OnInit {
         delete item.status;
         delete item.__v;
         delete item.number;
-        delete item.created;
+        delete item.createDate;
         return true;
     });
   }

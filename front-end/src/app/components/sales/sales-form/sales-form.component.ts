@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { ClientsService } from 'src/app/services/clients/clients-.service';
-import { ProductsService } from 'src/app/services/products/products.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { UtilsService } from 'src/app/services/utils/utils.service';
-import { SalesService } from 'src/app/services/sales/sales.service';
+import { Component, OnInit } from "@angular/core";
+import { ClientsService } from "src/app/services/clients/clients-.service";
+import { ProductsService } from "src/app/services/products/products.service";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { UtilsService } from "src/app/services/utils/utils.service";
+import { SalesService } from "src/app/services/sales/sales.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
-  selector: 'app-sales-form',
-  templateUrl: './sales-form.component.html',
-  styleUrls: ['./sales-form.component.scss']
+  selector: "app-sales-form",
+  templateUrl: "./sales-form.component.html",
+  styleUrls: ["./sales-form.component.scss"]
 })
 export class SalesFormComponent implements OnInit {
   public allClients = [];
@@ -19,26 +20,71 @@ export class SalesFormComponent implements OnInit {
   public addProductMsg = false;
   public showToaster = false;
   public toasterInfos = {};
-  public navigateRoute = '/sales';
+
+  public navigateRoute = "/sales";
+  public formChange = false;
+  public id;
+  public isEdit = false;
+  public titleMsg = "Nova Venda";
+
+  public randomSale = {
+    customer: ""
+  };
 
   constructor(
     private clientsService: ClientsService,
     private productsService: ProductsService,
     private formBuilder: FormBuilder,
     private utilsService: UtilsService,
-    private salesService: SalesService
+    private salesService: SalesService,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    this.setFormBuilder();
+    this.setFormBuilder(this.randomSale);
     this.getAllClients();
     this.getAllProducts();
   }
 
-  public setFormBuilder() {
+  public setFormBuilder(sale) {
     this.form = this.formBuilder.group({
-      customer: [null, Validators.required]
+      customer: [sale.customer, Validators.required]
     });
+  }
+
+  public fillFromBase() {
+    if (this.activatedRoute.snapshot.params.id) {
+      this.formChange = true;
+      this.id = this.activatedRoute.snapshot.params.id;
+      this.isEdit = true;
+      this.titleMsg = "Editar produto";
+      this.salesService.getById(this.id).subscribe(
+        res => {
+          res.items.forEach(p => {
+            this.allProducts.forEach(e => {
+              if(e._id === p.product){
+                const product = {
+                  active: e.active,
+                  description: e.description,
+                  price: p.price,
+                  slug: e.slug,
+                  tags: e.tags,
+                  title: e.title,
+                  _id: p._id,
+                  qtd: p.quantity
+                };
+                this.addedProducts.push(product);
+              }
+            });
+          });
+          this.setFormBuilder(res);
+          this.addProductMsg = false;
+        },
+        err => {
+          this.toasterMsg(false);
+        }
+      );
+    }
   }
 
   public getAllClients() {
@@ -58,10 +104,11 @@ export class SalesFormComponent implements OnInit {
           tags: p.tags,
           title: p.title,
           _id: p._id,
-          qtd: '1'
+          qtd: "1"
         };
         this.allProducts.push(product);
       });
+      this.fillFromBase();
     });
   }
 
@@ -102,13 +149,15 @@ export class SalesFormComponent implements OnInit {
   }
 
   public onSubmit() {
-    const isEmpty = (this.addedProducts === undefined || this.addedProducts.length === 0);
-    if (this.form.invalid || isEmpty ) {
+    const isEmpty =
+      this.addedProducts === undefined || this.addedProducts.length === 0;
+    if (this.form.invalid || isEmpty) {
       this.utilsService.testFormValid(this.form);
       if (isEmpty) {
         this.addProductMsg = true;
       }
     } else {
+
       const payloadItems = [];
       this.addedProducts.forEach(p => {
         const item = {
@@ -119,9 +168,23 @@ export class SalesFormComponent implements OnInit {
         payloadItems.push(item);
       });
       const payload = {
-        customer: this.form.get('customer').value,
+        customer: this.form.get("customer").value,
         items: payloadItems
       };
+
+      if (this.isEdit) {
+        this.salesService.update(this.id, payload).subscribe(
+          res => {
+            this.toasterMsg(true);
+          },
+          err => {
+            this.toasterMsg(false);
+          }
+        );
+      } else {
+
+
+
       this.salesService.save(payload).subscribe(
         res => {
           this.toasterMsg(true);
@@ -131,5 +194,6 @@ export class SalesFormComponent implements OnInit {
         }
       );
     }
+  }
   }
 }

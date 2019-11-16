@@ -20,6 +20,7 @@ exports.update = (infos) => {
     .findByIdAndUpdate(infos.id, {
       $set:{
         customer: infos.customer,
+        items: infos.items
       }
     })
 }

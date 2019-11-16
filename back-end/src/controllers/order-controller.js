@@ -55,7 +55,8 @@ exports.post = (req, res, next) => {
 exports.put = (req, res, next) => {
     const infos = {
         id : req.params.id,
-        customer: req.body.customer
+        customer: req.body.customer,
+        items: req.body.items
     };
     repository.update(infos)
         .then(x => {
