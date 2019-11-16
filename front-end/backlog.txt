@@ -55,23 +55,23 @@ mondularizar a aplicação
 Cruds
 	
 	forms
-		guarda can deactivate
+		guarda can deactivate - foi
 		
-		toaster compartilhado
+		toaster compartilhado - foi
 		
-		campo control no shared
+		campo control no shared - foi
 		
-		modal deactivate compartilhada
+		modal deactivate compartilhada - foi
 	
 	deletes
-		modal confirmation compartilhada
+		modal confirmation compartilhada - foi
 		
-		acionar api
+		acionar api - foi
 		
 modulo home
-	pra rediocinar os toasters de erro
+	pra rediocinar os toasters de erro - foi
 	
-classes broadcast e data table
+classes broadcast e data table - foi
 	criar classe utils
 		colocar o broadcast e o login ali
 		broadcast:
@@ -79,6 +79,14 @@ classes broadcast e data table
 			clients
 			sales
 			dataTabel
+			
+			
+sales forms
+	check boxes atras de um botao
+	no click, ativar função
+	checkboxes no formarray
+
+
 
 		
 testar funções

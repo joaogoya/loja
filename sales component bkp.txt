@@ -118,18 +118,25 @@ export class SalesFormComponent implements OnInit {
         };
         payloadItems.push(item);
       });
+
+      console.log(this.form.get('customer'));
+
       const payload = {
         customer: this.form.get('customer').value,
         items: payloadItems
       };
-      this.salesService.save(payload).subscribe(
-        res => {
-          this.toasterMsg(true);
-        },
-        err => {
-          this.toasterMsg(false);
-        }
-      );
+      console.log(payload);
+      this.salesService.save(payload).subscribe(res => {
+        console.log(res);
+      });
+      // this.salesService.save(payload).subscribe(
+      //   res => {
+      //     this.toasterMsg(true);
+      //   },
+      //   err => {
+      //     this.toasterMsg(false);
+      //   }
+      // );
     }
   }
 }
