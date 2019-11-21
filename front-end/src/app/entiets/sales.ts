@@ -8,5 +8,5 @@ export class Sales {
     createDate: Date;
     __v: number;
     customer: Client;
-    items: Product[];
+    items: any[];
 }

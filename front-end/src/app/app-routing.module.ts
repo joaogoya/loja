@@ -7,7 +7,7 @@ const routes: Routes = [
 
   {
     path: '',
-    redirectTo: 'clients/form',
+    redirectTo: 'sales',
     pathMatch: 'full'
   },
 

@@ -80,21 +80,63 @@ classes broadcast e data table - foi
 			sales
 			dataTabel
 			
-			
+errors entidades - objs - foi
+
+deactivate sales - foi
+
+validações com o back
+	numero de caracteres
+	email valido
+	...
+	nos 3 forms isso
+	
+sales-form
+	getall e fill from base - codigo repetido
+	
+sales-form
+	lasse mt grande
+	deve ta fazendo o que nao deve
+
+arquivo md para apresentar o projeto
+
+
+===================================================
+debito tecnico
+===============			
+
+deactivate modal
+
+barra de pesquisa na lista
+	levara para classe de serviço, dpois
+	colocar a do ng bootstrap q lista e ordena
+	
+validações
+	fazer o front validar que nem o back
+	
+spinners
+	o carregamento das paginas nao ta igual aodo carregamento dos prods no sales form
+
+colocar dados no local storage
+
 sales forms
-	check boxes atras de um botao
-	no click, ativar função
-	checkboxes no formarray
+	produtos de cada compra no form group
+	fazer aquilo acontecer dentro de um formulário
+	ta só a escolha do cliente
 
+reutilização de inputs
+	e classe p forms
+	
+pg 404, wild card, resolve - perfumaria do roteamento
 
+===================================================
+backlog
+=========
 
-		
 testar funções
 	
 escrever kit ui
 
-
-dadoos da tabela no local storage pra naoficar toda hora indo na api
+dadoos da tabela no local storage pra nao ficar toda hora indo na api
 	qd for crud, dai sim, ir na api e atualizar o local storage
 
 

@@ -14,7 +14,7 @@ import { UtilsService } from 'src/app/services/utils/utils.service';
 })
 export class ProductsFormComponent implements OnInit {
   public product: Product = {
-    id: '',
+    _id: '',
     title: '',
     price: 0,
     active: false,

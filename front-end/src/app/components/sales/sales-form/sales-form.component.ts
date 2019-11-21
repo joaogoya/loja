@@ -1,15 +1,15 @@
-import { Component, OnInit } from "@angular/core";
-import { ClientsService } from "src/app/services/clients/clients-.service";
-import { ProductsService } from "src/app/services/products/products.service";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { UtilsService } from "src/app/services/utils/utils.service";
-import { SalesService } from "src/app/services/sales/sales.service";
-import { ActivatedRoute } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { ClientsService } from 'src/app/services/clients/clients-.service';
+import { ProductsService } from 'src/app/services/products/products.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UtilsService } from 'src/app/services/utils/utils.service';
+import { SalesService } from 'src/app/services/sales/sales.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: "app-sales-form",
-  templateUrl: "./sales-form.component.html",
-  styleUrls: ["./sales-form.component.scss"]
+  selector: 'app-sales-form',
+  templateUrl: './sales-form.component.html',
+  styleUrls: ['./sales-form.component.scss']
 })
 export class SalesFormComponent implements OnInit {
   public allClients = [];
@@ -21,14 +21,16 @@ export class SalesFormComponent implements OnInit {
   public showToaster = false;
   public toasterInfos = {};
 
-  public navigateRoute = "/sales";
+  public navigateRoute = '/sales';
   public formChange = false;
   public id;
   public isEdit = false;
-  public titleMsg = "Nova Venda";
+  public titleMsg = 'Nova Venda';
+
+  public isModalShown = false;
 
   public randomSale = {
-    customer: ""
+    customer: ''
   };
 
   constructor(
@@ -57,12 +59,12 @@ export class SalesFormComponent implements OnInit {
       this.formChange = true;
       this.id = this.activatedRoute.snapshot.params.id;
       this.isEdit = true;
-      this.titleMsg = "Editar produto";
+      this.titleMsg = 'Editar produto';
       this.salesService.getById(this.id).subscribe(
         res => {
           res.items.forEach(p => {
             this.allProducts.forEach(e => {
-              if(e._id === p.product){
+              if (e._id === p.product) {
                 const product = {
                   active: e.active,
                   description: e.description,
@@ -104,12 +106,16 @@ export class SalesFormComponent implements OnInit {
           tags: p.tags,
           title: p.title,
           _id: p._id,
-          qtd: "1"
+          qtd: '1'
         };
         this.allProducts.push(product);
       });
       this.fillFromBase();
     });
+  }
+
+  public showModal() {
+    this.isModalShown = true;
   }
 
   public applyCssFeedback(input) {
@@ -157,7 +163,6 @@ export class SalesFormComponent implements OnInit {
         this.addProductMsg = true;
       }
     } else {
-
       const payloadItems = [];
       this.addedProducts.forEach(p => {
         const item = {
@@ -168,7 +173,7 @@ export class SalesFormComponent implements OnInit {
         payloadItems.push(item);
       });
       const payload = {
-        customer: this.form.get("customer").value,
+        customer: this.form.get('customer').value,
         items: payloadItems
       };
 
@@ -182,18 +187,15 @@ export class SalesFormComponent implements OnInit {
           }
         );
       } else {
-
-
-
-      this.salesService.save(payload).subscribe(
-        res => {
-          this.toasterMsg(true);
-        },
-        err => {
-          this.toasterMsg(false);
-        }
-      );
+        this.salesService.save(payload).subscribe(
+          res => {
+            this.toasterMsg(true);
+          },
+          err => {
+            this.toasterMsg(false);
+          }
+        );
+      }
     }
-  }
   }
 }
