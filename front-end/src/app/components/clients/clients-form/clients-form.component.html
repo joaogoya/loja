@@ -25,7 +25,9 @@
   <div class="card-body">
     <form [formGroup]="form">
       <div class="form-group">
-        <label for="name" [ngClass]="applyCssFeedback('name')">Nome</label>
+        <label for="name" [ngClass]="applyCssFeedback('name')">Nome
+            <small> <br /><i>No mínimo 3 caracteres, e no máximo 80.</i></small>
+        </label>
         <input
           type="text"
           [ngClass]="applyCssFeedback('name')"
@@ -36,7 +38,10 @@
           placeholder="nome"
           required
         />
-        <div class="invalid-feedback">Este campo é obrigatório</div>
+        <div class="invalid-feedback">
+            Este campo é obrigatório, e precisa ter no mínimo 3 caracteres, e no
+            máximo 80.
+          </div>
       </div>
 
       <div class="form-group">
@@ -71,7 +76,9 @@
 
       <div class="form-group">
         <label for="password" [ngClass]="applyCssFeedback('password')"
-          >Senha</label
+          >Senha
+          <small> <br /><i>No mínimo 6 caracteres, e no máximo 10.</i></small>
+          </label
         >
         <input
           type="text"
@@ -83,7 +90,10 @@
           placeholder="senha"
           required
         />
-        <div class="invalid-feedback">Este campo é obrigatório</div>
+        <div class="invalid-feedback">
+            Este campo é obrigatório, e precisa ter no mínimo 6 caracteres, e no
+            máximo 10.
+          </div>
       </div>
     </form>
   </div>

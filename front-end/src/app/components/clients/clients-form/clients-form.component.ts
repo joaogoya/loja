@@ -43,9 +43,9 @@ export class ClientsFormComponent implements OnInit {
 
   public setFormBuilder(client) {
     this.form = this.formBuilder.group({
-      name: [client.name, Validators.required],
+      name: [client.name, [Validators.required, Validators.minLength(3), Validators.maxLength(80)]],
       email: [client.email, Validators.required],
-      password: [client.password, Validators.required],
+      password: [client.password, [Validators.required, Validators.minLength(6), Validators.maxLength(10)]],
       slug: [client.slug, Validators.required]
     });
   }

@@ -73,7 +73,7 @@ exports.post = (req, res, next) => {
 
   // description validation
   contract.isRequired(product.description, 'O campo description é obrigatório.');
-  // contract.hasMinLen(product.description, 10, 'O campo description precisa ter no mínimo 10 caracteres.');
+  contract.hasMinLen(product.description, 10, 'O campo description precisa ter no mínimo 10 caracteres.');
   contract.hasMaxLen(product.description, 200, 'O campo description é precisa ter no máximo 200 caracteres.');
 
   // price validation

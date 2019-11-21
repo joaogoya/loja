@@ -54,11 +54,19 @@ export class ProductsFormComponent implements OnInit {
   /* build and set the form functions */
   public setFormBuilder(product: Product) {
     this.form = this.formBuilder.group({
-      title: [product.title, Validators.required],
+      title: [
+        product.title,
+        [Validators.required, Validators.minLength(3), Validators.maxLength(80)]
+      ],
+      description: [
+        product.description,
+        [Validators.required, Validators.minLength(10), Validators.maxLength(200)]
+      ],
+      slug: [product.slug,
+        [Validators.required, Validators.minLength(3), Validators.maxLength(80)]
+      ],
       active: [product.active, Validators.required],
       price: [product.price, Validators.required],
-      description: [product.description, Validators.required],
-      slug: [product.slug, Validators.required],
       tags: [product.tags, Validators.required]
     });
   }
@@ -70,8 +78,12 @@ export class ProductsFormComponent implements OnInit {
       this.isEdit = true;
       this.titleMsg = 'Editar produto';
       this.productService.getById(this.id).subscribe(
-        res => { this.setFormBuilder(res); },
-        err => { this.toasterMsg(false); }
+        res => {
+          this.setFormBuilder(res);
+        },
+        err => {
+          this.toasterMsg(false);
+        }
       );
     }
   }
