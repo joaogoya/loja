@@ -77,14 +77,10 @@ export class ProductsFormComponent implements OnInit {
       this.id = this.activatedRoute.snapshot.params.id;
       this.isEdit = true;
       this.titleMsg = 'Editar produto';
-      this.productService.getById(this.id).subscribe(
-        res => {
-          this.setFormBuilder(res);
-        },
-        err => {
-          this.toasterMsg(false);
-        }
-      );
+
+      this.activatedRoute.data.subscribe( (data: {product: Product} ) => {
+        this.setFormBuilder(data.product);
+      });
     }
   }
 

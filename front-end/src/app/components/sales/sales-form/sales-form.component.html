@@ -1,23 +1,16 @@
 <div class="card border-dark bg-light">
   <div class="card-header">
-<div class="row">
-  <div class="col-8">
-    <h2 class="card-title">{{ titleMsg }}</h2>
+    <div class="row">
+      <div class="col-8">
+        <h2 class="card-title">{{ titleMsg }}</h2>
+      </div>
+      <div class="col-4">
+        <button (click)="showModal()" class="btn btn-info float-right">
+          Voltar para a lista
+        </button>
+      </div>
+    </div>
   </div>
-
-  <div class="col-4">
-    <button
-      (click)="showModal()"
-      class="btn btn-info float-right"
-    >
-      Voltar para a lista
-    </button>
-  </div>
-</div>
-
-
-  </div>
-
 
   <div class="card-body">
     <form [formGroup]="form" class="needs-validation" novalidate>
@@ -31,26 +24,22 @@
           [ngClass]="applyCssFeedback('customer')"
           required
         >
-          <option *ngFor="let client of allClients" value="{{client._id}}">{{
+          <option *ngFor="let client of allClients" value="{{ client._id }}">{{
             client.name
           }}</option>
         </select>
         <div class="invalid-feedback">Este campo é obrigatório</div>
       </div>
-
       <hr />
-
       <div class="row">
         <div class="form-gorup col-6">
           <label>Produtos</label>
-
           <div *ngIf="!allProducts.length">
             <p class="text-info"><b>Carregando produtos....</b></p>
             <div class="spinner-grow text-info" role="status">
               <span class="sr-only">Loading...</span>
             </div>
           </div>
-
           <table
             *ngIf="allProducts.length"
             class="table table-striped table-responsive"
@@ -79,7 +68,7 @@
         </div>
 
         <!-- added table -->
-        <div  class="form-group col-6">
+        <div class="form-group col-6">
           <label>Produtos adicionados</label>
 
           <p *ngIf="addProductMsg" class="text-danger">
@@ -121,7 +110,7 @@
     <button
       type="submit"
       class="btn btn-success float-right"
-      (click)="onSubmit()" 
+      (click)="onSubmit()"
     >
       Enviar
     </button>

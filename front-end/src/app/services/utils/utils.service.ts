@@ -1,3 +1,4 @@
+import { Product } from './../../entiets/product';
 import { FormGroup } from '@angular/forms';
 import { Injectable, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
@@ -14,9 +15,17 @@ export class UtilsService {
 
   constructor(private router: Router) {}
 
+  public infos = {
+    component: 'products',
+    btnMessage: 'Novo produto',
+    data: [],
+    success: true,
+    error: {}
+  };
+
   /* components and data table comunication functions */
-  public dataComunication(infos) {
-    this.emitData.emit(infos);
+  public dataComunication(data) {
+    this.emitData.emit(data);
   }
 
   public cloeErrorModal() {

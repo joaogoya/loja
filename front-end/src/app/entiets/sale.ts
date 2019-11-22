@@ -1,7 +1,7 @@
 import { Product } from './product';
 import { Client } from './clients';
 
-export class Sales {
+export class Sale {
     status: string;
     id: string;
     number: number;

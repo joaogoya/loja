@@ -1,7 +1,8 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../../services/products/products.service';
 import { UtilsService } from 'src/app/services/utils/utils.service';
-import { Router } from '@angular/router';
+import { Product } from 'src/app/entiets/product';
 
 @Component({
   selector: 'app-products-list',
@@ -24,6 +25,7 @@ export class ProductsListComponent implements OnInit {
   constructor(
     private productsService: ProductsService,
     private utilsService: UtilsService,
+    private activatedRoute: ActivatedRoute
     ) {}
 
   ngOnInit() {
@@ -45,8 +47,8 @@ export class ProductsListComponent implements OnInit {
     );
   }
 
-  public removeAtributes(res) {
-    return res.filter((item) => {
+  public removeAtributes(data) {
+    return data.filter((item) => {
         delete item.active,
         delete item.slug;
         delete item.__v;

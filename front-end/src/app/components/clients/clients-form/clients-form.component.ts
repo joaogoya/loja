@@ -3,6 +3,7 @@ import { UtilsService } from 'src/app/services/utils/utils.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Client } from 'src/app/entiets/clients';
 
 @Component({
   selector: 'app-clients-form',
@@ -57,10 +58,9 @@ export class ClientsFormComponent implements OnInit {
       this.id = this.activatedRoute.snapshot.params.id;
       this.isEdit = true;
       this.titleMsg = 'Editar produto';
-      this.clienstService.getById(this.id).subscribe(
-        res => { this.setFormBuilder(res); },
-        err => { this.toasterMsg(false); }
-      );
+      this.activatedRoute.data.subscribe( (data: {client: Client} ) => {
+        this.setFormBuilder(data.client);
+      });
     }
   }
 

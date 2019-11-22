@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Sales } from 'src/app/entiets/sales';
+import { Sale } from 'src/app/entiets/sale';
 import { SalesBase } from 'src/app/entiets/saaleBase';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class SalesService {
   constructor( private http: HttpClient ) { }
 
   public getAll() {
-    return this.http.get<Sales[]>(this.baseUrl);
+    return this.http.get<Sale[]>(this.baseUrl);
   }
 
   public save(sale: SalesBase) {
@@ -21,7 +21,7 @@ export class SalesService {
   }
 
   public getById(id: string) {
-    return this.http.get<Sales>(this.baseUrl + '/id/' + id);
+    return this.http.get<Sale>(this.baseUrl + '/id/' + id);
   }
 
   public update(id: string, sale: SalesBase) {

@@ -17,6 +17,7 @@ export class DataTableComponent implements OnInit {
     name: '',
     message: ''
   };
+  public showMenu = true;
 
   /*DATA*/
   public infos;

@@ -84,18 +84,21 @@ errors entidades - objs - foi
 
 deactivate sales - foi
 
-validações com o back
-	numero de caracteres
-	email valido
-	...
-	nos 3 forms isso
+validações com o back - foi
 	
 sales-form
-	getall e fill from base - codigo repetido
+	getall e fill from base - codigo repetido - foi
 	
-sales-form
-	lasse mt grande
+sales-form - foi
+	classe mt grande
 	deve ta fazendo o que nao deve
+
+perfumaria do roteamento 
+	menu aparecendo nas listagens - foi
+	resolve
+	pg 404, wild card, 
+	
+Tratar erro na classe de serviço
 
 arquivo md para apresentar o projeto
 
@@ -126,7 +129,7 @@ sales forms
 reutilização de inputs
 	e classe p forms
 	
-pg 404, wild card, resolve - perfumaria do roteamento
+
 
 ===================================================
 backlog

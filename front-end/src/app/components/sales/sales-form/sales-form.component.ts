@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UtilsService } from 'src/app/services/utils/utils.service';
 import { SalesService } from 'src/app/services/sales/sales.service';
 import { ActivatedRoute } from '@angular/router';
+import { Sale } from 'src/app/entiets/sale';
 
 @Component({
   selector: 'app-sales-form',
@@ -15,19 +16,19 @@ export class SalesFormComponent implements OnInit {
   public allClients = [];
   public allProducts = [];
   public addedProducts = [];
-  public isCheckd = false;
   public form: FormGroup;
+
+  public formChange = false;
   public addProductMsg = false;
+
   public showToaster = false;
   public toasterInfos = {};
-
+  public isModalShown = false;
   public navigateRoute = '/sales';
-  public formChange = false;
+
   public id;
   public isEdit = false;
   public titleMsg = 'Nova Venda';
-
-  public isModalShown = false;
 
   public randomSale = {
     customer: ''
@@ -60,32 +61,56 @@ export class SalesFormComponent implements OnInit {
       this.id = this.activatedRoute.snapshot.params.id;
       this.isEdit = true;
       this.titleMsg = 'Editar produto';
-      this.salesService.getById(this.id).subscribe(
-        res => {
-          res.items.forEach(p => {
-            this.allProducts.forEach(e => {
-              if (e._id === p.product) {
-                const product = {
-                  active: e.active,
-                  description: e.description,
-                  price: p.price,
-                  slug: e.slug,
-                  tags: e.tags,
-                  title: e.title,
-                  _id: p._id,
-                  qtd: p.quantity
-                };
-                this.addedProducts.push(product);
-              }
-            });
+
+      this.activatedRoute.data.subscribe((data: { sale: Sale }) => {
+        this.setFormBuilder(data.sale);
+        data.sale.items.forEach(p => {
+          this.allProducts.forEach(e => {
+            if (e._id === p.product) {
+              const product = {
+                active: e.active,
+                description: e.description,
+                price: p.price,
+                slug: e.slug,
+                tags: e.tags,
+                title: e.title,
+                _id: p._id,
+                qtd: p.quantity
+              };
+              this.addedProducts.push(product);
+            }
           });
-          this.setFormBuilder(res);
-          this.addProductMsg = false;
-        },
-        err => {
-          this.toasterMsg(false);
-        }
-      );
+        });
+        this.setFormBuilder(data.sale);
+        this.addProductMsg = false;
+      });
+
+      // this.salesService.getById(this.id).subscribe(
+      //   res => {
+      //     res.items.forEach(p => {
+      //       this.allProducts.forEach(e => {
+      //         if (e._id === p.product) {
+      //           const product = {
+      //             active: e.active,
+      //             description: e.description,
+      //             price: p.price,
+      //             slug: e.slug,
+      //             tags: e.tags,
+      //             title: e.title,
+      //             _id: p._id,
+      //             qtd: p.quantity
+      //           };
+      //           this.addedProducts.push(product);
+      //         }
+      //       });
+      //     });
+      //     this.setFormBuilder(res);
+      //     this.addProductMsg = false;
+      //   },
+      //   err => {
+      //     this.toasterMsg(false);
+      //   }
+      // );
     }
   }
 

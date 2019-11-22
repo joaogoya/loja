@@ -7,6 +7,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { ClientsRoutingModule } from './clients.routing';
 import { ClientsListComponent } from './clients-list/clients-list.component';
 import { ClientsFormComponent } from './clients-form/clients-form.component';
+import { ClientResolver } from 'src/app/guards/resolvers/clients/client-resolver.guard';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,6 @@ import { ClientsFormComponent } from './clients-form/clients-form.component';
     SharedModule,
     ClientsRoutingModule
   ],
-  providers: []
+  providers: [ClientResolver]
 })
 export class ClientssModule { }

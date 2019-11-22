@@ -6,6 +6,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { SalesRoutingModule } from './sales.routing';
 import { SalesListComponent } from './sales-list/sales-list.component';
 import { SalesFormComponent } from './sales-form/sales-form.component';
+import { SaleResolver } from 'src/app/guards/resolvers/sales/sales-resolver.guard';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,6 @@ import { SalesFormComponent } from './sales-form/sales-form.component';
     SharedModule,
     SalesRoutingModule
   ],
-  providers: []
+  providers: [SaleResolver]
 })
 export class SalesModule { }

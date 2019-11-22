@@ -1,4 +1,4 @@
-
+import { ProductResolver } from '../../guards/resolvers/products/product-ressolver.guard';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -8,6 +8,7 @@ import { ProductsFormComponent } from './products-form/products-form.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductsRoutingModule } from './products.routing';
 import { ModalModule } from 'ngx-bootstrap/modal';
+
 
 @NgModule({
   declarations: [
@@ -21,8 +22,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     RouterModule,
     SharedModule,
     ProductsRoutingModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
   ],
-  providers: []
+  providers: [ProductResolver]
 })
 export class ProducsModule { }
