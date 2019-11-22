@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {
+  Event,
+  NavigationCancel,
+  NavigationEnd,
+  NavigationError,
+  NavigationStart,
+  Router
+} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +15,38 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   title = 'front-end';
+  loading = false;
 
-  constructor(private router: Router) {}
+  // constructor(private router: Router) {}
+
+  constructor(private router: Router) {
+
+    this.router.events.subscribe((event: Event) => {
+      switch (true) {
+        case event instanceof NavigationStart: {
+          this.loading = true;
+          break;
+        }
+
+        case event instanceof NavigationEnd:
+        case event instanceof NavigationCancel:
+        case event instanceof NavigationError: {
+          this.loading = false;
+          break;
+        }
+        default: {
+          break;
+        }
+      }
+    });
+  }
 
   ngOnInit() {
     // redirect on reload
     // this.router.navigate(['']);
   }
+
+
+
+
 }

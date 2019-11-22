@@ -95,8 +95,8 @@ sales-form - foi
 
 perfumaria do roteamento 
 	menu aparecendo nas listagens - foi
-	resolve
-	pg 404, wild card, 
+	resolve - foi
+	pg 404, wild card,
 	
 Tratar erro na classe de serviço
 
