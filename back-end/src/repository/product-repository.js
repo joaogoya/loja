@@ -35,6 +35,5 @@ exports.update = (infos) => {
 }
 
 exports.remove = (id) => {
-    console.log(id);
     return Product.findOneAndRemove({'_id': id});
 }

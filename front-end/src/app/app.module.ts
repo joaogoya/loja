@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AllProductsResolver } from './guards/resolvers/products/allProductsResolve.guard';
+import { AllClientsResolver } from './guards/resolvers/clients/all-clients-resolver.guard';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { AllProductsResolver } from './guards/resolvers/products/allProductsReso
     ModalModule.forRoot(),
     SharedModule
   ],
-  providers: [AllProductsResolver],
+  providers: [AllProductsResolver, AllClientsResolver],
   exports: [],
   bootstrap: [AppComponent],
 })

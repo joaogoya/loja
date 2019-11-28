@@ -13,7 +13,7 @@
           Voltar para a lista
         </button>
         <button
-          [routerLink]="['/products']"
+          [routerLink]="['/clients']"
           *ngIf="!formChange"
           class="btn btn-info float-right"
         >
@@ -114,4 +114,4 @@
   [navigateRoute]="navigateRoute"
 ></app-deactivate-modal>
 
-<app-toaster *ngIf="showToaster" [infos]="toasterInfos"></app-toaster>
+<app-toaster *ngIf="showToaster" [success]="toasterSuccess"></app-toaster>

@@ -93,6 +93,10 @@ export class DataTableComponent implements OnInit {
     this.router.navigate([this.component + '/form']);
   }
 
+  public btnEdit(item) {
+    this.router.navigate([this.component + '/form/' + item[0]]);
+  }
+
   public onDelete(item: any) {
     this.showDelteModal = true;
     this.itemToDelete.data = item;

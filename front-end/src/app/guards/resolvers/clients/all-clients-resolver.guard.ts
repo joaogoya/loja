@@ -12,7 +12,7 @@ import { ClientsService } from 'src/app/services/clients/clients-.service';
 
 @Injectable()
 
-export class ClientResolver implements Resolve<Client> {
+export class AllClientsResolver implements Resolve<Client[]> {
 
   constructor(
     private clientsService: ClientsService,
@@ -22,14 +22,14 @@ export class ClientResolver implements Resolve<Client> {
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<Client> | Promise<Client> | Client {
-    console.log('resoliving the client.');
-    return this.clientsService.getById(route.params.id).pipe(
+  ): Observable<Client[]> | Promise<Client[]> | Client[] {
+    console.log('resolving the clients.');
+    return this.clientsService.getAll().pipe(
       map(result => {
         return result;
        }),
       catchError((err, caught) => {
-        this.router.navigate(['home']);
+        this.router.navigate(['error']);
         return empty();
       })
     );

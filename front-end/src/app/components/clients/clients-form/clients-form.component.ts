@@ -2,7 +2,7 @@ import { ClientsService } from './../../../services/clients/clients-.service';
 import { UtilsService } from 'src/app/services/utils/utils.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Client } from 'src/app/entiets/clients';
 
 @Component({
@@ -10,18 +10,16 @@ import { Client } from 'src/app/entiets/clients';
   templateUrl: './clients-form.component.html',
   styleUrls: ['./clients-form.component.scss']
 })
-export class ClientsFormComponent implements OnInit {
 
+export class ClientsFormComponent implements OnInit {
   public form: FormGroup;
   public toasterInfos = {};
-  public showToaster;
   public isEdit = false;
   public formChange = false;
   public id = '';
   public titleMsg = 'Novo cliente';
   public isModalShown = false;
   public navigateRoute = '/clients';
-
 
   public client = {
     name: '',
@@ -30,12 +28,16 @@ export class ClientsFormComponent implements OnInit {
     slug: ''
   };
 
+  public showToaster = false;
+  public toasterSuccess: boolean;
+
   constructor(
     private formBuilder: FormBuilder,
     private utilsService: UtilsService,
     private clienstService: ClientsService,
-    private activatedRoute: ActivatedRoute
-  ) { }
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.setFormBuilder(this.client);
@@ -44,9 +46,15 @@ export class ClientsFormComponent implements OnInit {
 
   public setFormBuilder(client) {
     this.form = this.formBuilder.group({
-      name: [client.name, [Validators.required, Validators.minLength(3), Validators.maxLength(80)]],
+      name: [
+        client.name,
+        [Validators.required, Validators.minLength(3), Validators.maxLength(80)]
+      ],
       email: [client.email, Validators.required],
-      password: [client.password, [Validators.required, Validators.minLength(6), Validators.maxLength(10)]],
+      password: [
+        client.password,
+        [Validators.required, Validators.minLength(6), Validators.maxLength(10)]
+      ],
       slug: [client.slug, Validators.required]
     });
   }
@@ -58,7 +66,7 @@ export class ClientsFormComponent implements OnInit {
       this.id = this.activatedRoute.snapshot.params.id;
       this.isEdit = true;
       this.titleMsg = 'Editar produto';
-      this.activatedRoute.data.subscribe( (data: {client: Client} ) => {
+      this.activatedRoute.data.subscribe((data: { client: Client }) => {
         this.setFormBuilder(data.client);
       });
     }
@@ -78,16 +86,17 @@ export class ClientsFormComponent implements OnInit {
     this.isModalShown = true;
   }
 
-  public toasterMsg(succes: boolean) {
-    this.toasterInfos = {
-      success: succes,
-      route: this.navigateRoute
-    };
+  public toasterMsg(success: boolean) {
+    this.toasterSuccess = success;
     this.showToaster = true;
+    setTimeout(() => {
+      this.router.navigate( ['/blank']).then(() => {
+        this.router.navigate(['/clients/list']);
+      });
+    }, 1800);
   }
 
   public onSubmit() {
-    console.log(this.form.value);
     if (this.form.invalid) {
       this.utilsService.testFormValid(this.form);
     } else {
@@ -101,7 +110,6 @@ export class ClientsFormComponent implements OnInit {
           }
         );
       } else {
-        // this.tagsAdjust();
         this.clienstService.save(this.form.value).subscribe(
           res => {
             this.toasterMsg(true);
@@ -113,5 +121,4 @@ export class ClientsFormComponent implements OnInit {
       } // if is save or edit
     }
   }
-
 }

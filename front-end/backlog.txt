@@ -113,10 +113,22 @@ padronizar resolverss
 			modulo delete - atualizando dados - blank - foi
 			
 		fazer list component p tirar o spinner do form - foi
-		
-		
-resolver lazy load e refactoring nos produtos foi
+
 fazer no clients e no sales	
+	
+	clients
+		fazer o guarda
+			colocar no lazyload
+			colocar no clients/lis
+	
+		gett all vai pro guarda
+		arrumar clients list
+		localstorage
+		
+		delete e form
+			acho que é só os redirect
+		
+		
 	
 	
 	

@@ -54,7 +54,6 @@ export class ProductsListComponent implements OnInit {
     });
   }
 
-  /* submission form functions */
   public toasterMsg(success: boolean) {
     this.toasterSuccess = success;
     this.showToaster = true;

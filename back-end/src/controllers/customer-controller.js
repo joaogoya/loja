@@ -123,7 +123,7 @@ exports.put = (req, res, next) => {
 
 // remove - delete
 exports.delete = (req, res, next) => {
-  repository.remove(req.body.id)
+  repository.remove(req.params.id)
     .then(x => {
       res.status(200).send({
         msg: "Customer removido com sucesso"

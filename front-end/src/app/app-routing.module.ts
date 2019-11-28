@@ -5,6 +5,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { BlankComponent } from './shared/blank/blank.component';
+import { ErrorGuardsComponent } from './shared/error-guards/error-guards.component';
+import { AllClientsResolver } from './guards/resolvers/clients/all-clients-resolver.guard';
 
 const routes: Routes = [
 
@@ -31,6 +33,7 @@ const routes: Routes = [
 
   { path: 'clients',
     canLoad: [LoginGuard],
+    resolve: {clients: AllClientsResolver},
     loadChildren: () => import('./components/clients/clients.module').then(e => e.ClientssModule)
   },
 
@@ -38,6 +41,8 @@ const routes: Routes = [
     canLoad: [LoginGuard],
     loadChildren: () => import('./components/sales/sales.module').then(e => e.SalesModule)
   },
+
+  { path: 'error', component: ErrorGuardsComponent },
 
   { path: 'blank', component: BlankComponent },
 

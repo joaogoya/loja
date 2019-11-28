@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -7,7 +6,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { ClientsRoutingModule } from './clients.routing';
 import { ClientsListComponent } from './clients-list/clients-list.component';
 import { ClientsFormComponent } from './clients-form/clients-form.component';
-import { ClientResolver } from 'src/app/guards/resolvers/clients/client-resolver.guard';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { SingleClientResolver } from 'src/app/guards/resolvers/clients/sigleClientResolver.guard';
 
 @NgModule({
   declarations: [
@@ -15,13 +15,14 @@ import { ClientResolver } from 'src/app/guards/resolvers/clients/client-resolver
     ClientsFormComponent
   ],
   imports: [
-    CommonModule,
-    RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    CommonModule,
+    RouterModule,
     SharedModule,
-    ClientsRoutingModule
+    ClientsRoutingModule,
+    ModalModule.forRoot(),
   ],
-  providers: [ClientResolver]
+  providers: [SingleClientResolver]
 })
 export class ClientssModule { }

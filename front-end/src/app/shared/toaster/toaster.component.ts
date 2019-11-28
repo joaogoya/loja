@@ -40,6 +40,6 @@ export class ToasterComponent implements OnInit {
         timeOut: 2200
       }
     );
-    this.router.navigate(['/home']);
+    this.router.navigate(['/error']);
   }
 }

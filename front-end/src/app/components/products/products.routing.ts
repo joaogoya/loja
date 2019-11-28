@@ -10,8 +10,8 @@ const ProductsRoutes: Routes = [
     { path: '', component: ProductsListComponent },
 
     {
-      path: 'list', 
-      component: ProductsListComponent, 
+      path: 'list',
+      component: ProductsListComponent,
       resolve: {products: AllProductsResolver},
       runGuardsAndResolvers: 'always'
     },

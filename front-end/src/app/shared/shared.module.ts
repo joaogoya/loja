@@ -11,6 +11,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { DeleteModalComponent } from './delete-modal/delete-modal.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { BlankComponent } from './blank/blank.component';
+import { ErrorGuardsComponent } from './error-guards/error-guards.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { BlankComponent } from './blank/blank.component';
     DeactivateModalComponent,
     DeleteModalComponent,
     NotFoundComponent,
-    BlankComponent
+    BlankComponent,
+    ErrorGuardsComponent
   ],
   imports: [
     CommonModule,

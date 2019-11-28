@@ -1,15 +1,15 @@
 import { ClientsService } from './../../../services/clients/clients-.service';
 import { Component, OnInit } from '@angular/core';
 import { UtilsService } from 'src/app/services/utils/utils.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Client } from 'src/app/entiets/clients';
 
 @Component({
   selector: 'app-clients-list',
   templateUrl: './clients-list.component.html',
   styleUrls: ['./clients-list.component.scss']
 })
-
 export class ClientsListComponent implements OnInit {
-
   public infos = {
     component: 'clients',
     btnMessage: 'Novo Cliente',
@@ -19,53 +19,50 @@ export class ClientsListComponent implements OnInit {
   };
 
   public showToaster = false;
-  public toasterInfos = {};
+  public toasterSuccess: boolean;
 
   constructor(
     private clientsService: ClientsService,
-    private utilsService: UtilsService
-    ) { }
+    private utilsService: UtilsService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    this.getAll(this.infos);
+    this.getAll();
     this.deleteSubscribe();
   }
 
-  private getAll(infos) {
-    this.clientsService.getAll().subscribe(
-      res => {
-        infos.data = this.removeAtributes(res);
-        this.utilsService.dataComunication(infos);
-      },
-      err => {
-        this.infos.success = false;
-        this.infos.error = err;
-        this.utilsService.dataComunication(infos);
-      }
-    );
-  }
-
-  public removeAtributes(res) {
-    return res.filter((item) => {
-        delete item.slug;
-        delete item.__v;
-        return true;
+  private getAll() {
+    this.activatedRoute.data.subscribe((data: { clients: Client[] }) => {
+      this.infos.data = this.removeAtributes(data.clients);
+      localStorage.removeItem('dataclients');
+      localStorage.setItem('dataclients', JSON.stringify(this.infos));
     });
   }
 
-  public toasterMsg(succes: boolean) {
-    this.getAll(this.infos);
-    this.toasterInfos = {
-      success: succes,
-      route: 'clients'
-    };
+  public removeAtributes(res) {
+    return res.filter(item => {
+      delete item.slug;
+      delete item.__v;
+      return true;
+    });
+  }
+
+  public toasterMsg(success: boolean) {
+    this.toasterSuccess = success;
     this.showToaster = true;
+    setTimeout(() => {
+      this.router.navigate(['/blank']).then(() => {
+        this.router.navigate(['/clients/list']);
+      });
+    }, 1800);
   }
 
   public deleteSubscribe() {
     this.utilsService.deleteItem.subscribe(e => {
       this.showToaster = false;
-      const id = e.data[2];
+      const id = e.data[0];
       if (e.component === 'clients') {
         this.clientsService.delete(id).subscribe(
           res => {
@@ -78,5 +75,6 @@ export class ClientsListComponent implements OnInit {
       }
     });
   }
+
 
 }

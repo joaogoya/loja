@@ -1,15 +1,14 @@
 import { TestBed, async, inject } from '@angular/core/testing';
-
-import { ClientResolverGuard } from './client-resolver.guard';
+import { SingleClientResolver } from './sigleClientResolver.guard';
 
 describe('ClientResolverGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ClientResolverGuard]
+      providers: [SingleClientResolver]
     });
   });
 
-  it('should ...', inject([ClientResolverGuard], (guard: ClientResolverGuard) => {
+  it('should ...', inject([SingleClientResolver], (guard: SingleClientResolver) => {
     expect(guard).toBeTruthy();
   }));
 });
