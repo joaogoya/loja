@@ -5,7 +5,8 @@ import {
   NavigationEnd,
   NavigationError,
   NavigationStart,
-  Router
+  Router,
+  RouterEvent
 } from '@angular/router';
 
 @Component({
@@ -15,38 +16,33 @@ import {
 })
 export class AppComponent implements OnInit {
   title = 'front-end';
-  loading = false;
 
-  // constructor(private router: Router) {}
+
+  loading = true;
 
   constructor(private router: Router) {
-
-    this.router.events.subscribe((event: Event) => {
-      switch (true) {
-        case event instanceof NavigationStart: {
-          this.loading = true;
-          break;
-        }
-
-        case event instanceof NavigationEnd:
-        case event instanceof NavigationCancel:
-        case event instanceof NavigationError: {
-          this.loading = false;
-          break;
-        }
-        default: {
-          break;
-        }
-      }
+    router.events.subscribe((routerEvent: RouterEvent) => {
+      this.checkRouterEvent(routerEvent);
     });
   }
+
+  checkRouterEvent(routerEvent: RouterEvent): void {
+    if (routerEvent instanceof NavigationStart) {
+      this.loading = true;
+    }
+
+    if (routerEvent instanceof NavigationEnd ||
+      routerEvent instanceof NavigationCancel ||
+      routerEvent instanceof NavigationError) {
+      this.loading = false;
+    }
+  }
+
+
 
   ngOnInit() {
     // redirect on reload
     // this.router.navigate(['']);
   }
-
-
-
 
 }

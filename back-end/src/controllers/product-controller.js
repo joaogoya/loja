@@ -89,9 +89,14 @@ exports.post = (req, res, next) => {
   // insere no banco e retorna
   repository.create(product)
     .then(x => {
-      res.status(200).send({
-        msg: "Produto cadastrado com sucesso"
-      })
+      repository
+        .get()
+        .then(data => {
+            res.status(200).send(data);
+        })
+        .catch(e => {
+          res.status(400).send(e);
+        });
     })
     .catch(e => {
       res.status(400).send({
@@ -111,7 +116,6 @@ exports.put = (req, res, next) => {
     description: req.body.description,
     tags: req.body.tags
   };
-  console.table(product);
 
   //const product = req.body;
 
@@ -159,7 +163,7 @@ exports.put = (req, res, next) => {
 
 // remove - delete
 exports.delete = (req, res, next) => {
-  repository.remove(req.body.id)
+  repository.remove(req.params.id)
     .then(x => {
       res.status(200).send({
         msg: "Produto removido com sucesso"

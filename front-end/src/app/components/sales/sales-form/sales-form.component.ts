@@ -63,7 +63,7 @@ export class SalesFormComponent implements OnInit {
       this.titleMsg = 'Editar produto';
 
       this.activatedRoute.data.subscribe((data: { sale: Sale }) => {
-        this.setFormBuilder(data.sale);
+        this.addProductMsg = false;
         data.sale.items.forEach(p => {
           this.allProducts.forEach(e => {
             if (e._id === p.product) {
@@ -82,35 +82,7 @@ export class SalesFormComponent implements OnInit {
           });
         });
         this.setFormBuilder(data.sale);
-        this.addProductMsg = false;
       });
-
-      // this.salesService.getById(this.id).subscribe(
-      //   res => {
-      //     res.items.forEach(p => {
-      //       this.allProducts.forEach(e => {
-      //         if (e._id === p.product) {
-      //           const product = {
-      //             active: e.active,
-      //             description: e.description,
-      //             price: p.price,
-      //             slug: e.slug,
-      //             tags: e.tags,
-      //             title: e.title,
-      //             _id: p._id,
-      //             qtd: p.quantity
-      //           };
-      //           this.addedProducts.push(product);
-      //         }
-      //       });
-      //     });
-      //     this.setFormBuilder(res);
-      //     this.addProductMsg = false;
-      //   },
-      //   err => {
-      //     this.toasterMsg(false);
-      //   }
-      // );
     }
   }
 

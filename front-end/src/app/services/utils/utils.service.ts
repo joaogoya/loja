@@ -1,4 +1,3 @@
-import { Product } from './../../entiets/product';
 import { FormGroup } from '@angular/forms';
 import { Injectable, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
@@ -11,6 +10,7 @@ export class UtilsService {
   public closeModal = new EventEmitter();
   public deleteItem = new EventEmitter();
   public loggerdUser = new EventEmitter<boolean>();
+  public reload = new EventEmitter();
   public userAuth = false;
 
   constructor(private router: Router) {}

@@ -1,9 +1,8 @@
-<app-spinner *ngIf="spinner"></app-spinner>
 
 <div *ngIf="!spinner && success" id="sucess">
   <div class="row">
     <div class="col-sm-6">
-      <button [routerLink] ="['form']"  class="btn btn-success">{{ infos.btnMessage }}</button>
+      <button (click)="btnNew()" class="btn btn-success">{{ infos.btnMessage }}</button>
     </div>
     <div class="col-sm-6">
       <div class="input-group mb-3">

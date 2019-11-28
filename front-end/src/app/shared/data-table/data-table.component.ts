@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { UtilsService } from 'src/app/services/utils/utils.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-data-table',
@@ -23,13 +24,14 @@ export class DataTableComponent implements OnInit {
   public infos;
   public atributes;
   public data = [];
+  @Input() component;
 
   /* delete item */
   public showDelteModal = false;
   public itemToDelete = {
     component: '',
     data: ''
-  }
+  };
 
   /*PAGINATION*/
   public page = 1;
@@ -42,17 +44,21 @@ export class DataTableComponent implements OnInit {
   @ViewChild('inputSearchBar', {static: true}) inputSearchBar;
   /* ========================================================>>> end of attribute declaration */
 
-  constructor( private utilsService: UtilsService ) {}
+  constructor(
+    private utilsService: UtilsService,
+    private router: Router
+    ) {}
 
   ngOnInit() {
-    this.utilsService.emitData.subscribe( infos => {
-      this.infos = infos;
-      this.itemToDelete.component = this.infos.component;
-      this.dataHandling(infos);
-    });
-    this.utilsService.closeModal.subscribe(e => {
-      this.showDelteModal = e;
-    });
+    this.getData();
+    this.closeModalSubscriber();
+  }
+
+  public getData() {
+    const storeddInfos = localStorage.getItem('data' + this.component);
+    this.infos = JSON.parse(storeddInfos);
+    this.itemToDelete.component = this.infos.component;
+    this.dataHandling(this.infos);
   }
 
   public dataHandling(infos) {
@@ -65,7 +71,7 @@ export class DataTableComponent implements OnInit {
 
   public successHndling(values) {
 
-    /* change an aarraof objs in to two arrays of strings */
+    /* change an aarraof objs into two arrays of strings */
     this.data = [];
     this.atributes = Object.keys(values[0]);
     values.forEach(element => {
@@ -83,16 +89,40 @@ export class DataTableComponent implements OnInit {
     this.spinner = false;
   }
 
-  public reload() {
-    this.hasResult = true;
-    this.inputSearchBar.nativeElement.value = '';
-    this.successHndling(this.infos.data);
+  public btnNew() {
+    this.router.navigate([this.component + '/form']);
   }
 
   public onDelete(item: any) {
     this.showDelteModal = true;
     this.itemToDelete.data = item;
   }
+
+  public closeModalSubscriber() {
+    this.utilsService.closeModal.subscribe(e => {
+      this.showDelteModal = e;
+    });
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   /*==========================================>>> Searchbar <<<<=====*/
@@ -141,6 +171,12 @@ export class DataTableComponent implements OnInit {
         this.hasResult = false;
       }
     }
+  }
+
+  public reload() {
+    this.hasResult = true;
+    this.inputSearchBar.nativeElement.value = '';
+    this.successHndling(this.infos.data);
   }
   /*==========================================>>> End of Searchbar <<<<=====*/
 

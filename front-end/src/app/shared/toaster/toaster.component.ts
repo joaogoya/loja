@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ToasterComponent implements OnInit {
 
-  @Input('infos') toasterInfos;
+  @Input('success') toasterSuccess;
 
   constructor(
     private toastr: ToastrService,
@@ -17,7 +17,7 @@ export class ToasterComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.toasterInfos.success ? this.showSuccess() : this.showError();
+    this.toasterSuccess ? this.showSuccess() : this.showError();
   }
 
   public showSuccess() {
@@ -29,7 +29,6 @@ export class ToasterComponent implements OnInit {
         timeOut: 1800
       }
     );
-    this.router.navigate([this.toasterInfos.route]);
   }
 
   public showError() {

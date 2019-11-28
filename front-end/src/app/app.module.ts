@@ -10,6 +10,7 @@ import { LoginModule } from './components/login/login.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { AllProductsResolver } from './guards/resolvers/products/allProductsResolve.guard';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     ModalModule.forRoot(),
     SharedModule
   ],
-  providers: [],
+  providers: [AllProductsResolver],
   exports: [],
   bootstrap: [AppComponent],
 })

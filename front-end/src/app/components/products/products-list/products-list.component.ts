@@ -1,8 +1,8 @@
-import { ActivatedRoute } from '@angular/router';
+import { Product } from './../../../entiets/product';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../../services/products/products.service';
 import { UtilsService } from 'src/app/services/utils/utils.service';
-import { Product } from 'src/app/entiets/product';
 
 @Component({
   selector: 'app-products-list',
@@ -20,30 +20,26 @@ export class ProductsListComponent implements OnInit {
   };
 
   public showToaster = false;
-  public toasterInfos = {};
+  public toasterSuccess: boolean;
 
   constructor(
     private productsService: ProductsService,
     private utilsService: UtilsService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
     ) {}
 
   ngOnInit() {
-    this.getAll(this.infos);
+    this.getAll();
     this.deleteSubscribe();
   }
 
-  private getAll(infos) {
-    this.productsService.getAll().subscribe(
-      res => {
-        infos.data = this.removeAtributes(res);
-        this.utilsService.dataComunication(infos);
+  private getAll() {
+    this.activatedRoute.data.subscribe( (data: {products: Product[]} ) => {
+        this.infos.data = this.removeAtributes(data.products);
+        localStorage.removeItem('dataproducts');
+        localStorage.setItem('dataproducts', JSON.stringify(this.infos));
       },
-      err => {
-        this.infos.success = false;
-        this.infos.error = err;
-        this.utilsService.dataComunication(infos);
-      }
     );
   }
 
@@ -59,19 +55,20 @@ export class ProductsListComponent implements OnInit {
   }
 
   /* submission form functions */
-  public toasterMsg(succes: boolean) {
-    this.getAll(this.infos);
-    this.toasterInfos = {
-      success: succes,
-      route: 'products'
-    };
+  public toasterMsg(success: boolean) {
+    this.toasterSuccess = success;
     this.showToaster = true;
+    setTimeout(() => {
+      this.router.navigate( ['/blank']).then(() => {
+        this.router.navigate(['/products/list']);
+      });
+    }, 1800);
   }
 
   public deleteSubscribe() {
     this.utilsService.deleteItem.subscribe(e => {
       this.showToaster = false;
-      const id = e.data[2];
+      const id = e.data[0];
       if (e.component === 'products') {
         this.productsService.delete(id).subscribe(
           res => {

@@ -1,4 +1,4 @@
-import { ProductResolver } from '../../guards/resolvers/products/product-ressolver.guard';
+import { SingleProductResolver } from '../../guards/resolvers/products/singleProductResolver.guard';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -24,6 +24,6 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     ProductsRoutingModule,
     ModalModule.forRoot(),
   ],
-  providers: [ProductResolver]
+  providers: [SingleProductResolver]
 })
 export class ProducsModule { }

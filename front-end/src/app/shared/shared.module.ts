@@ -9,6 +9,8 @@ import { ToasterComponent } from './toaster/toaster.component';
 import { DeactivateModalComponent } from './deactivate-modal/deactivate-modal.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { DeleteModalComponent } from './delete-modal/delete-modal.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { BlankComponent } from './blank/blank.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { DeleteModalComponent } from './delete-modal/delete-modal.component';
     DataTableComponent,
     ToasterComponent,
     DeactivateModalComponent,
-    DeleteModalComponent
+    DeleteModalComponent,
+    NotFoundComponent,
+    BlankComponent
   ],
   imports: [
     CommonModule,

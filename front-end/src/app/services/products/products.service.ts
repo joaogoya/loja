@@ -29,6 +29,8 @@ export class ProductsService {
   }
 
   public delete(id: string) {
+    console.log('service');
+    console.log(id);
     return this.http.delete(this.baseUrl + '/' + id);
   }
 

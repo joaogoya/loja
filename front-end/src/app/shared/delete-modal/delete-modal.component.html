@@ -21,7 +21,8 @@
           Você realmente quer deletar o produto:
         </p>
         <p class="text-danger">
-          <b>{{ toDelete.data[2] }}</b>
+          <b>{{ toDelete.data[1] }}</b><br>
+          <span>ID: <i>{{ toDelete.data[0] }}</i> </span>
         </p>
         <hr />
         <button type="button" class="btn btn-secondary" (click)="hideModal()">

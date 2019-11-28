@@ -1,7 +1,7 @@
 import { Product } from './../../../entiets/product';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { ProductsService } from 'src/app/services/products/products.service';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { ViewChild } from '@angular/core';
@@ -36,13 +36,14 @@ export class ProductsFormComponent implements OnInit {
   public navigateRoute = '/products';
 
   public showToaster = false;
-  public toasterInfos = {};
+  public toasterSuccess: boolean;
 
   constructor(
     private productService: ProductsService,
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
-    private utilsService: UtilsService
+    private utilsService: UtilsService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -101,12 +102,14 @@ export class ProductsFormComponent implements OnInit {
   }
 
   /* submission form functions */
-  public toasterMsg(succes: boolean) {
-    this.toasterInfos = {
-      success: succes,
-      route: this.navigateRoute
-    };
+  public toasterMsg(success: boolean) {
+    this.toasterSuccess = success;
     this.showToaster = true;
+    setTimeout(() => {
+      this.router.navigate( ['/blank']).then(() => {
+        this.router.navigate(['/products/list']);
+      });
+    }, 1800);
   }
 
   public tagsAdjust() {

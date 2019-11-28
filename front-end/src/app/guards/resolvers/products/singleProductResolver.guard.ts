@@ -11,7 +11,7 @@ import { ProductsService } from 'src/app/services/products/products.service';
 import { Product } from 'src/app/entiets/product';
 
 @Injectable()
-export class ProductResolver implements Resolve<Product> {
+export class SingleProductResolver implements Resolve<Product> {
 
   constructor(
     private productsService: ProductsService,
@@ -28,6 +28,7 @@ export class ProductResolver implements Resolve<Product> {
         return result;
        }),
       catchError((err, caught) => {
+        console.log(err);
         this.router.navigate(['home']);
         return empty();
       })

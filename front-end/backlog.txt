@@ -96,9 +96,42 @@ sales-form - foi
 perfumaria do roteamento 
 	menu aparecendo nas listagens - foi
 	resolve - foi
-	pg 404, wild card,
 	
-Tratar erro na classe de serviço
+Tratar erro dos resolvers
+
+padronizar resolverss
+	colocar no carregamento por demanda
+	e ver outra maneira de enviar os dados para o data table
+	local storage de repente
+	
+	refactoring resolvers lazyload
+		testar edição no form - foi
+		
+		delete
+			qd abre a modal delete, nao ta aparecendo o id - foi - nome
+			setTimeOut no redirectt p tratar o toast - error or succes - foi
+			modulo delete - atualizando dados - blank - foi
+			
+		fazer list component p tirar o spinner do form - foi
+		
+		
+resolver lazy load e refactoring nos produtos foi
+fazer no clients e no sales	
+	
+	
+	
+	
+pg 404 e pg de erro nos componentes
+
+com o menu sempre aparecendo tem q fazer o deactivate direito
+	
+user session
+
+refactoring das pastas
+	modularizar guardas e serviços
+	colocar no modulo de cada componente
+
+testar funções
 
 arquivo md para apresentar o projeto
 
