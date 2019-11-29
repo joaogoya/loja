@@ -12,6 +12,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AllProductsResolver } from './guards/resolvers/products/allProductsResolve.guard';
 import { AllClientsResolver } from './guards/resolvers/clients/all-clients-resolver.guard';
+import { AllSalesResolver } from './guards/resolvers/sales/all-sales-resolver.guard';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { AllClientsResolver } from './guards/resolvers/clients/all-clients-resol
     ModalModule.forRoot(),
     SharedModule
   ],
-  providers: [AllProductsResolver, AllClientsResolver],
+  providers: [AllProductsResolver, AllClientsResolver, AllSalesResolver],
   exports: [],
   bootstrap: [AppComponent],
 })

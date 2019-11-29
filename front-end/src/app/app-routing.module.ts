@@ -7,6 +7,7 @@ import { HomeComponent } from './components/home/home.component';
 import { BlankComponent } from './shared/blank/blank.component';
 import { ErrorGuardsComponent } from './shared/error-guards/error-guards.component';
 import { AllClientsResolver } from './guards/resolvers/clients/all-clients-resolver.guard';
+import { AllSalesResolver } from './guards/resolvers/sales/all-sales-resolver.guard';
 
 const routes: Routes = [
 
@@ -39,6 +40,7 @@ const routes: Routes = [
 
   { path: 'sales',
     canLoad: [LoginGuard],
+    resolve: {sales: AllSalesResolver},
     loadChildren: () => import('./components/sales/sales.module').then(e => e.SalesModule)
   },
 

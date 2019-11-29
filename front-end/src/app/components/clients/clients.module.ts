@@ -7,7 +7,7 @@ import { ClientsRoutingModule } from './clients.routing';
 import { ClientsListComponent } from './clients-list/clients-list.component';
 import { ClientsFormComponent } from './clients-form/clients-form.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { SingleClientResolver } from 'src/app/guards/resolvers/clients/sigleClientResolver.guard';
+import { SingleClientResolver } from 'src/app/guards/resolvers/clients/single-client-resolver.guard';
 
 @NgModule({
   declarations: [

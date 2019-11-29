@@ -23,7 +23,7 @@ export class AllClientsResolver implements Resolve<Client[]> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<Client[]> | Promise<Client[]> | Client[] {
-    console.log('resolving the clients.');
+    console.log('Resolving the clients.');
     return this.clientsService.getAll().pipe(
       map(result => {
         return result;

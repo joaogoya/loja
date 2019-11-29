@@ -2,6 +2,7 @@ import { Product } from './../../../entiets/product';
 import { Component, OnInit } from '@angular/core';
 import { SalesService } from './../../../services/sales/sales.service';
 import { UtilsService } from 'src/app/services/utils/utils.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-sales-list',
@@ -19,31 +20,26 @@ export class SalesListComponent implements OnInit {
   };
 
   public showToaster = false;
-  public toasterInfos = {};
+  public toasterSuccess: boolean;
 
   constructor(
     private salesService: SalesService,
-    private utilsService: UtilsService
+    private utilsService: UtilsService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
     ) {}
 
   ngOnInit() {
-    this.getAll(this.infos);
+    this.getAll();
     this.deleteSubscribe();
   }
 
-  private getAll(infos) {
-    this.salesService.getAll().subscribe(
-      res => {
-        this.handleProducts(res);
-        this.infos.data = this.removeAtributes(res);
-        this.utilsService.dataComunication(infos);
-      },
-      err => {
-        this.infos.success = false;
-        this.infos.error = err;
-        this.utilsService.dataComunication(infos);
-      }
-    );
+  private getAll() {
+    this.activatedRoute.data.subscribe( (data: {sales: Product[]} ) => {
+      this.infos.data = this.removeAtributes(data.sales);
+      localStorage.removeItem('datasales');
+      localStorage.setItem('datasales', JSON.stringify(this.infos));
+    });
   }
 
   public removeAtributes(res) {
@@ -72,15 +68,15 @@ export class SalesListComponent implements OnInit {
     });
   }
 
-  public toasterMsg(succes: boolean) {
-    this.getAll(this.infos);
-    this.toasterInfos = {
-      success: succes,
-      route: 'sales'
-    };
+  public toasterMsg(success: boolean) {
+    this.toasterSuccess = success;
     this.showToaster = true;
+    setTimeout(() => {
+      this.router.navigate( ['/blank']).then(() => {
+        this.router.navigate(['/sales/list']);
+      });
+    }, 1800);
   }
-
 
   public deleteSubscribe() {
     this.utilsService.deleteItem.subscribe(e => {

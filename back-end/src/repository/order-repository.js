@@ -26,5 +26,5 @@ exports.update = (infos) => {
 }
 
 exports.remove = (id) => {
-    return Order.findOneAndRemove(id);
+    return Order.findOneAndRemove({'_id': id});
 }

@@ -12,7 +12,7 @@ import { SalesService } from 'src/app/services/sales/sales.service';
 
 @Injectable()
 
-export class SaleResolver implements Resolve<Sale> {
+export class SingleSaleResolver implements Resolve<Sale> {
 
   constructor(
     private salesService: SalesService,
@@ -23,13 +23,13 @@ export class SaleResolver implements Resolve<Sale> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<Sale> | Promise<Sale> | Sale {
-    console.log('resoliving the sale.');
+    console.log('Resolving the sale.');
     return this.salesService.getById(route.params.id).pipe(
       map(result => {
         return result;
        }),
       catchError((err, caught) => {
-        this.router.navigate(['home']);
+        this.router.navigate(['errror']);
         return empty();
       })
     );

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ClientsListComponent } from './clients-list/clients-list.component';
 import { ClientsFormComponent } from './clients-form/clients-form.component';
-import { SingleClientResolver } from 'src/app/guards/resolvers/clients/sigleClientResolver.guard';
+import { SingleClientResolver } from 'src/app/guards/resolvers/clients/single-client-resolver.guard';
 import { AllClientsResolver } from 'src/app/guards/resolvers/clients/all-clients-resolver.guard';
 
 const ClientsRoutes: Routes = [

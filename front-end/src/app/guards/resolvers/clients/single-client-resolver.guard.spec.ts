@@ -1,5 +1,5 @@
 import { TestBed, async, inject } from '@angular/core/testing';
-import { SingleClientResolver } from './sigleClientResolver.guard';
+import { SingleClientResolver } from './single-client-resolver.guard';
 
 describe('ClientResolverGuard', () => {
   beforeEach(() => {

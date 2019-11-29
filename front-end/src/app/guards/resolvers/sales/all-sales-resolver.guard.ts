@@ -7,24 +7,24 @@ import {
   Router
 } from '@angular/router';
 import { Observable, EMPTY, empty } from 'rxjs';
-import { Client } from 'src/app/entiets/clients';
-import { ClientsService } from 'src/app/services/clients/clients-.service';
+import { Sale } from 'src/app/entiets/sale';
+import { SalesService } from 'src/app/services/sales/sales.service';
 
 @Injectable()
 
-export class SingleClientResolver implements Resolve<Client> {
+export class AllSalesResolver implements Resolve<Sale[]> {
 
   constructor(
-    private clientsService: ClientsService,
+    private salesService: SalesService,
     private router: Router
     ) {}
 
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<Client> | Promise<Client> | Client {
-    console.log('resoliving the client.');
-    return this.clientsService.getById(route.params.id).pipe(
+  ): Observable<Sale[]> | Promise<Sale[]> | Sale[] {
+    console.log('Resolving the sales.');
+    return this.salesService.getAll().pipe(
       map(result => {
         return result;
        }),

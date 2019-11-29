@@ -22,14 +22,14 @@ export class SingleProductResolver implements Resolve<Product> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<Product> | Promise<Product> | Product {
-    console.log('resoliving the product.');
+    console.log('Resolving the product.');
     return this.productsService.getById(route.params.id).pipe(
       map(result => {
         return result;
        }),
       catchError((err, caught) => {
         console.log(err);
-        this.router.navigate(['home']);
+        this.router.navigate(['error']);
         return empty();
       })
     );

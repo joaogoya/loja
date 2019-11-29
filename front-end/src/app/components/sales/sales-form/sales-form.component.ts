@@ -4,7 +4,7 @@ import { ProductsService } from 'src/app/services/products/products.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UtilsService } from 'src/app/services/utils/utils.service';
 import { SalesService } from 'src/app/services/sales/sales.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Sale } from 'src/app/entiets/sale';
 
 @Component({
@@ -22,7 +22,8 @@ export class SalesFormComponent implements OnInit {
   public addProductMsg = false;
 
   public showToaster = false;
-  public toasterInfos = {};
+  public toasterSuccess: boolean;
+
   public isModalShown = false;
   public navigateRoute = '/sales';
 
@@ -40,7 +41,8 @@ export class SalesFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private utilsService: UtilsService,
     private salesService: SalesService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -143,17 +145,18 @@ export class SalesFormComponent implements OnInit {
     this.addProduct(product);
   }
 
-  public toasterMsg(succes: boolean) {
-    this.toasterInfos = {
-      success: succes,
-      route: this.navigateRoute
-    };
+  public toasterMsg(success: boolean) {
+    this.toasterSuccess = success;
     this.showToaster = true;
+    setTimeout(() => {
+      this.router.navigate( ['/blank']).then(() => {
+        this.router.navigate(['/sales/list']);
+      });
+    }, 1800);
   }
 
   public onSubmit() {
-    const isEmpty =
-      this.addedProducts === undefined || this.addedProducts.length === 0;
+    const isEmpty = this.addedProducts === undefined || this.addedProducts.length === 0;
     if (this.form.invalid || isEmpty) {
       this.utilsService.testFormValid(this.form);
       if (isEmpty) {
