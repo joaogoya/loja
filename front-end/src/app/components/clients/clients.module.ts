@@ -8,6 +8,7 @@ import { ClientsListComponent } from './clients-list/clients-list.component';
 import { ClientsFormComponent } from './clients-form/clients-form.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { SingleClientResolver } from 'src/app/guards/resolvers/clients/single-client-resolver.guard';
+import { ClientCanDeactivate } from 'src/app/guards/deactivates/clients/client-deactivate.guard';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,6 @@ import { SingleClientResolver } from 'src/app/guards/resolvers/clients/single-cl
     ClientsRoutingModule,
     ModalModule.forRoot(),
   ],
-  providers: [SingleClientResolver]
+  providers: [SingleClientResolver, ClientCanDeactivate]
 })
 export class ClientssModule { }

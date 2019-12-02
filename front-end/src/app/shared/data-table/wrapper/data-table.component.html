@@ -1,0 +1,34 @@
+<div id="sucess">
+  <div class="row">
+    <div class="col-sm-6">
+      <button (click)="btnNew()" class="btn btn-success">
+        {{ infos.btnMessage }}
+      </button>
+    </div>
+    <div class="col-sm-6"></div>
+  </div>
+  <br /><br />
+
+  <div class="d-none d-md-block">
+    <app-desk
+      [data]="data"
+      [atributes]="atributes"
+      (onEdit)="btnEdit($event)"
+      (onDelete)="btnDelete($event)"
+    ></app-desk>
+  </div>
+
+  <div class="d-sm-block d-md-none">
+    <app-mobile
+      [data]="data"
+      [atributes]="atributes"
+      (onEdit)="btnEdit($event)"
+      (onDelete)="btnDelete($event)"
+    ></app-mobile>
+  </div>
+</div>
+
+<app-delete-modal
+  *ngIf="showDelteModal"
+  [item]="itemToDelete"
+></app-delete-modal>

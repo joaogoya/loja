@@ -17,7 +17,7 @@ export class ProductsFormComponent implements OnInit {
     _id: '',
     title: '',
     price: 0,
-    active: false,
+    active: true,
     description: '',
     slug: '',
     tags: [],
@@ -28,12 +28,6 @@ export class ProductsFormComponent implements OnInit {
   public isEdit = false;
   public id: '';
   public titleMsg = 'Novo produto';
-
-  @ViewChild('autoShownModal', { static: false })
-  public autoShownModal: ModalDirective;
-  public isModalShown = false;
-  public formChange = false;
-  public navigateRoute = '/products';
 
   public showToaster = false;
   public toasterSuccess: boolean;
@@ -49,7 +43,6 @@ export class ProductsFormComponent implements OnInit {
   ngOnInit() {
     this.setFormBuilder(this.product);
     this.fillFromBase();
-    this.onChanges();
   }
 
   /* build and set the form functions */
@@ -68,13 +61,12 @@ export class ProductsFormComponent implements OnInit {
       ],
       active: [product.active, Validators.required],
       price: [product.price, Validators.required],
-      tags: [product.tags, Validators.required]
+      tags: [product.tags.toString(), Validators.required]
     });
   }
 
   public fillFromBase() {
     if (this.activatedRoute.snapshot.params.id) {
-      this.formChange = true;
       this.id = this.activatedRoute.snapshot.params.id;
       this.isEdit = true;
       this.titleMsg = 'Editar produto';
@@ -89,17 +81,6 @@ export class ProductsFormComponent implements OnInit {
     return this.utilsService.applyCssFeedback(input, this.form);
   }
 
-  /* modal deactivate functions */
-  public onChanges(): void {
-    this.form.valueChanges.subscribe(() => {
-      this.formChange = true;
-    });
-  }
-
-  public showModal() {
-    this.isModalShown = true;
-  }
-
   /* submission form functions */
   public toasterMsg(success: boolean) {
     this.toasterSuccess = success;
@@ -112,7 +93,7 @@ export class ProductsFormComponent implements OnInit {
   }
 
   public tagsAdjust() {
-    const tags = this.form.get('tags').value.split(';');
+    const tags = this.form.get('tags').value.split(',');
     this.form.controls.tags.patchValue(tags);
   }
 

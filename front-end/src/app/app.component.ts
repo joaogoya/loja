@@ -17,7 +17,6 @@ import {
 export class AppComponent implements OnInit {
   title = 'front-end';
 
-
   loading = true;
 
   constructor(private router: Router) {
@@ -38,11 +37,7 @@ export class AppComponent implements OnInit {
     }
   }
 
-
-
   ngOnInit() {
-    // redirect on reload
-    // this.router.navigate(['']);
   }
 
 }

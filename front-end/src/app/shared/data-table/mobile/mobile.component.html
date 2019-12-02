@@ -1,0 +1,40 @@
+<div
+  class="card border-dark bg-light"
+  *ngFor="
+    let item of data
+      | slice: (page - 1) * pageSize:(page - 1) * pageSize + pageSize
+  "
+>
+  <div class="card-header"></div>
+  <div class="card-body">
+    <ul class="list-group list-group-flush">
+      <li
+        *ngFor="let atribute of atributes; let i = index"
+        class="list-group-item bg-light"
+      >
+        <b>{{ atribute }}: </b><i>{{ item[i] }}</i>
+      </li>
+    </ul>
+  </div>
+  <div class="card-footer">
+    <div class="row">
+      <div class="col-6">
+        <button (click)="btnEdit(item)" class="btn btn-success">
+          <i class="fa fa-pencil-square-o"></i>
+        </button>
+      </div>
+      <div class="col-6 text-right">
+        <button class="btn btn-danger deleteData" (click)="btnDelete(item)">
+          <i class="fa fa-trash-o"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ngb-pagination
+  class="d-flex justify-content-center"
+  [(page)]="page"
+  [pageSize]="pageSize"
+  [collectionSize]="data.length"
+></ngb-pagination>

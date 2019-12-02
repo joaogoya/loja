@@ -18,14 +18,10 @@ export class SalesFormComponent implements OnInit {
   public addedProducts = [];
   public form: FormGroup;
 
-  public formChange = false;
   public addProductMsg = false;
 
   public showToaster = false;
   public toasterSuccess: boolean;
-
-  public isModalShown = false;
-  public navigateRoute = '/sales';
 
   public id;
   public isEdit = false;
@@ -59,7 +55,6 @@ export class SalesFormComponent implements OnInit {
 
   public fillFromBase() {
     if (this.activatedRoute.snapshot.params.id) {
-      this.formChange = true;
       this.id = this.activatedRoute.snapshot.params.id;
       this.isEdit = true;
       this.titleMsg = 'Editar produto';
@@ -111,10 +106,6 @@ export class SalesFormComponent implements OnInit {
       });
       this.fillFromBase();
     });
-  }
-
-  public showModal() {
-    this.isModalShown = true;
   }
 
   public applyCssFeedback(input) {

@@ -1,0 +1,46 @@
+<table class="table table-striped">
+  <thead class="bg-dark">
+    <tr>
+      <th class="title">*</th>
+      <th
+        *ngFor="let item of atributes; let i = index"
+        scope="col"
+        class="title"
+      >
+        {{ item }}
+      </th>
+      <th style="width: 20%;" scope="col" class="title text-right">
+        <button class="btn btn-dark" disabled>Ações</button>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="
+        let item of data
+          | slice: (page - 1) * pageSize:(page - 1) * pageSize + pageSize;
+        let i = index
+      "
+    >
+      <td>{{ i + 1 }}</td>
+      <td *ngFor="let atribute of atributes; let i = index">
+        {{ item[i] }}
+      </td>
+      <td class="text-right">
+        <button (click)="btnEdit(item)" class="btn btn-success">
+          <i class="fa fa-pencil-square-o"></i>
+        </button>
+        <button class="btn btn-danger deleteData" (click)="btnDelete(item)">
+          <i class="fa fa-trash-o"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<ngb-pagination
+  class="d-flex justify-content-center"
+  [(page)]="page"
+  [pageSize]="pageSize"
+  [collectionSize]="data.length"
+></ngb-pagination>

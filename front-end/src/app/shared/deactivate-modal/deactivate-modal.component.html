@@ -1,39 +1,16 @@
-<div
-  *ngIf="isModalShown"
-  [config]="{ show: true }"
-  (onHidden)="onHidden()"
-  bsModal
-  #autoShownModal="bs-modal"
-  class="modal fade"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="dialog-auto-name"
->
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-header bg-warning">
-        <h4 id="dialog-auto-name" class="modal-title pull-left text-center">
-          Atenção.
-        </h4>
-      </div>
-      <div class="modal-body">
-        <p>
-          Você está saindo do formulário. Todas as informações inseridas serão
-          perdidas.
-        </p>
-        <p class="text-warning"><b>Você realmente deseja sair?</b></p>
-        <hr />
-        <button type="button" class="btn btn-secondary" (click)="hideModal()">
-          Permanecer
-        </button>
-        <button
-          type="button"
-          routerLink="{{ navigateRoute }}"
-          class="btn btn-warning pull-right"
-        >
-          Sair da página
-        </button>
-      </div>
-    </div>
-  </div>
+<div class="modal-header bg-warning">
+  <h4 id="dialog-auto-name" class="modal-title pull-left text-center">
+    Atenção.
+  </h4>
+</div>
+<div class="modal-body">
+  <p>
+    Você está saindo do formulário. Todas as informações inseridas não serão
+    salvas.
+  </p>
+  <p class="text-warning"><b>Você realmente deseja sair?</b></p>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-warning mr-auto" (click)="action(true)">Sair da página</button>
+  <button class="btn btn-secondary" (click)="action(false)">Permanecer na página</button>
 </div>

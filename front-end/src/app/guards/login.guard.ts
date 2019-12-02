@@ -9,19 +9,20 @@ import {
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { UtilsService } from '../services/utils/utils.service';
+import { LoginService } from '../services/login.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginGuard implements CanLoad {
   constructor(
-    private utilsService: UtilsService,
+    private loginService: LoginService,
     private router: Router
     ) {}
 
   canLoad(route: Route, segments: UrlSegment[]): Observable<boolean> | boolean {
-    if (this.utilsService.guardLogin()) {
-      return this.utilsService.guardLogin();
+    if (this.loginService.guardLogin()) {
+      return this.loginService.guardLogin();
     }
     this.router.navigate(['']);
     return false;
@@ -31,8 +32,8 @@ export class LoginGuard implements CanLoad {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    if (this.utilsService.guardLogin()) {
-      return this.utilsService.guardLogin();
+    if (this.loginService.guardLogin()) {
+      return this.loginService.guardLogin();
     }
     this.router.navigate(['']);
     return false;

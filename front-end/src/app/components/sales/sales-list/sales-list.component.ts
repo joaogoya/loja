@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { SalesService } from './../../../services/sales/sales.service';
 import { UtilsService } from 'src/app/services/utils/utils.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Sale } from 'src/app/entiets/sale';
 
 @Component({
   selector: 'app-sales-list',
@@ -35,10 +36,11 @@ export class SalesListComponent implements OnInit {
   }
 
   private getAll() {
-    this.activatedRoute.data.subscribe( (data: {sales: Product[]} ) => {
+    this.activatedRoute.data.subscribe( (data: {sales: Sale[]} ) => {
+      console.log('DATA ROTA');
+      console.log(data);
+      this.handleProducts(data.sales);
       this.infos.data = this.removeAtributes(data.sales);
-      localStorage.removeItem('datasales');
-      localStorage.setItem('datasales', JSON.stringify(this.infos));
     });
   }
 
@@ -62,7 +64,7 @@ export class SalesListComponent implements OnInit {
           productsNames.push(e.product.title);
           item.items = productsNames.join('; ');
         } else {
-          productsNames = ['sem produtos cadastrados.']
+          productsNames = ['sem produtos cadastrados.'];
         }
       });
     });

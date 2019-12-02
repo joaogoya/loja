@@ -113,27 +113,12 @@ padronizar resolverss
 			modulo delete - atualizando dados - blank - foi
 			
 		fazer list component p tirar o spinner do form - foi
-
-fazer no clients e no sales	
-	
-	clients
-		fazer o guarda
-			colocar no lazyload
-			colocar no clients/lis
-	
-		gett all vai pro guarda
-		arrumar clients list
-		localstorage
-		
-		delete e form
-			acho que é só os redirect
-		
-		
+			
+	resolvers gurads nas 3 entidades - foi
 	
 	
-	
-	
-pg 404 e pg de erro nos componentes
+refactoring sales list e sales form
+	as classes tao mt grandes
 
 com o menu sempre aparecendo tem q fazer o deactivate direito
 	
@@ -142,8 +127,7 @@ user session
 refactoring das pastas
 	modularizar guardas e serviços
 	colocar no modulo de cada componente
-
-testar funções
+	pg 404 e pg de erro nos componentes
 
 arquivo md para apresentar o projeto
 
@@ -152,28 +136,14 @@ arquivo md para apresentar o projeto
 debito tecnico
 ===============			
 
-deactivate modal
-
 barra de pesquisa na lista
 	levara para classe de serviço, dpois
 	colocar a do ng bootstrap q lista e ordena
-	
-validações
-	fazer o front validar que nem o back
-	
-spinners
-	o carregamento das paginas nao ta igual aodo carregamento dos prods no sales form
-
-colocar dados no local storage
 
 sales forms
 	produtos de cada compra no form group
 	fazer aquilo acontecer dentro de um formulário
 	ta só a escolha do cliente
-
-reutilização de inputs
-	e classe p forms
-	
 
 
 ===================================================
@@ -184,12 +154,7 @@ testar funções
 	
 escrever kit ui
 
-dadoos da tabela no local storage pra nao ficar toda hora indo na api
-	qd for crud, dai sim, ir na api e atualizar o local storage
-
-
-
-
-
+reutilização de inputs
+	e classe p forms
 
 

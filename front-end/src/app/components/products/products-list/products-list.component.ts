@@ -37,8 +37,6 @@ export class ProductsListComponent implements OnInit {
   private getAll() {
     this.activatedRoute.data.subscribe( (data: {products: Product[]} ) => {
         this.infos.data = this.removeAtributes(data.products);
-        localStorage.removeItem('dataproducts');
-        localStorage.setItem('dataproducts', JSON.stringify(this.infos));
       },
     );
   }

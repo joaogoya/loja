@@ -15,11 +15,8 @@ export class ClientsFormComponent implements OnInit {
   public form: FormGroup;
   public toasterInfos = {};
   public isEdit = false;
-  public formChange = false;
   public id = '';
   public titleMsg = 'Novo cliente';
-  public isModalShown = false;
-  public navigateRoute = '/clients';
 
   public client = {
     name: '',
@@ -61,7 +58,6 @@ export class ClientsFormComponent implements OnInit {
 
   public fillFromBase() {
     if (this.activatedRoute.snapshot.params.id) {
-      this.formChange = true;
       this.isEdit = true;
       this.id = this.activatedRoute.snapshot.params.id;
       this.isEdit = true;
@@ -74,16 +70,6 @@ export class ClientsFormComponent implements OnInit {
 
   public applyCssFeedback(input) {
     return this.utilsService.applyCssFeedback(input, this.form);
-  }
-
-  public onChanges(): void {
-    this.form.valueChanges.subscribe(() => {
-      this.formChange = true;
-    });
-  }
-
-  public showModal() {
-    this.isModalShown = true;
   }
 
   public toasterMsg(success: boolean) {

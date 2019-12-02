@@ -1,18 +1,21 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf="showMenu">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-inverse" *ngIf="showMenu">
   <div class="container">
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="navbar-header float-right order-md-first order-lg-last">
+        <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <button class="btn btn-secondary btn-outline-light float-right" (click)="btnLogout()">SAIR</button>
+    </div>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse float-left" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
           <li class="nav-item" routerLinkActive="active">
               <a class="nav-link" routerLink="/home"
@@ -20,7 +23,7 @@
               ></a>
             </li>
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="/products/list"
+          <a class="nav-link" routerLink="/products"
             >Produtos <span class="sr-only"></span
           ></a>
         </li>

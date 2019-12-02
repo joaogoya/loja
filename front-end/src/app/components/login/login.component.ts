@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { UtilsService } from 'src/app/services/utils/utils.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -13,11 +13,12 @@ export class LoginComponent implements OnInit {
   public errorMsg = false;
 
   constructor(
-      private utilsService: UtilsService,
+      private loginService: LoginService,
       private formBuilder: FormBuilder
     ) { }
 
   ngOnInit() {
+    this.loginService.destroySession();
     this.setFormBuilder();
   }
 
@@ -30,7 +31,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.form.valid) {
-      this.utilsService.login(this.form.value);
+      this.loginService.login(this.form.value);
     } else {
       this.errorMsg = true;
     }

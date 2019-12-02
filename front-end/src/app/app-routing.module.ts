@@ -1,10 +1,10 @@
 import { AllProductsResolver } from './guards/resolvers/products/allProductsResolve.guard';
-import { NotFoundComponent } from './shared/not-found/not-found.component';
+import { NotFoundComponent } from './components/utilitarians/not-found/not-found.component';
 import { LoginGuard } from './guards/login.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
-import { BlankComponent } from './shared/blank/blank.component';
+import { HomeComponent } from './components/utilitarians/home/home.component';
+import { BlankComponent } from './components/utilitarians/blank/blank.component';
 import { ErrorGuardsComponent } from './shared/error-guards/error-guards.component';
 import { AllClientsResolver } from './guards/resolvers/clients/all-clients-resolver.guard';
 import { AllSalesResolver } from './guards/resolvers/sales/all-sales-resolver.guard';
@@ -50,7 +50,7 @@ const routes: Routes = [
 
   { path: '404', component: NotFoundComponent },
 
-  { path: '**', redirectTo: '/404' }
+  { path: '**', redirectTo: '/404', pathMatch: 'full' }
 
 ];
 

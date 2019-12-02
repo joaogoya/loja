@@ -28,7 +28,6 @@ export class SingleProductResolver implements Resolve<Product> {
         return result;
        }),
       catchError((err, caught) => {
-        console.log(err);
         this.router.navigate(['error']);
         return empty();
       })

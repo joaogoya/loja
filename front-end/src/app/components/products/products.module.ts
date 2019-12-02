@@ -1,3 +1,4 @@
+import { ProductCanDeactivate } from '../../guards/deactivates/products/product-deactivate.guard';
 import { SingleProductResolver } from '../../guards/resolvers/products/singleProductResolver.guard';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -24,6 +25,9 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     ProductsRoutingModule,
     ModalModule.forRoot(),
   ],
-  providers: [SingleProductResolver]
+  providers: [
+    SingleProductResolver,
+    ProductCanDeactivate
+  ]
 })
 export class ProducsModule { }

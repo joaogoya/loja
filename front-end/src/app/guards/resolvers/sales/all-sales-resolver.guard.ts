@@ -26,6 +26,8 @@ export class AllSalesResolver implements Resolve<Sale[]> {
     console.log('Resolving the sales.');
     return this.salesService.getAll().pipe(
       map(result => {
+        console.log('GUARD RESULT');
+        console.log(result);
         return result;
        }),
       catchError((err, caught) => {

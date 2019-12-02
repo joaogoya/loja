@@ -1,32 +1,22 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { ModalDirective } from 'ngx-bootstrap/modal';
+import { Component, OnInit } from '@angular/core';
+import { BsModalRef } from 'ngx-bootstrap';
+import { Subject } from 'rxjs';
 
 @Component({
-  selector: 'app-deactivate-modal',
+  selector: 'app-sample-modal',
   templateUrl: './deactivate-modal.component.html',
   styleUrls: ['./deactivate-modal.component.scss']
 })
-export class DeactivateModalComponent implements OnInit {
+export class DeactivateModalComponent {
 
-  @ViewChild('autoShownModal', { static: false }) autoShownModal: ModalDirective;
-  @Input('navigateRoute') navigateRoute;
-  isModalShown = false;
+  subject: Subject<boolean>;
 
-  constructor() { }
+  constructor(public bsModalRef: BsModalRef) { }
 
-  ngOnInit() {
-    this.showModal();
+  action(value: boolean) {
+    this.bsModalRef.hide();
+    this.subject.next(value);
+    this.subject.complete();
   }
 
-  public showModal(): void {
-    this.isModalShown = true;
-  }
-
-  public hideModal(): void {
-    this.autoShownModal.hide();
-  }
-
-  public onHidden(): void {
-    this.isModalShown = false;
-  }
 }

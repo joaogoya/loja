@@ -7,6 +7,7 @@ import { SalesRoutingModule } from './sales.routing';
 import { SalesListComponent } from './sales-list/sales-list.component';
 import { SalesFormComponent } from './sales-form/sales-form.component';
 import { SingleSaleResolver } from 'src/app/guards/resolvers/sales/single-sales-resolver.guard';
+import { SaleCanDeactivate } from 'src/app/guards/deactivates/sales/sales-deactivate.guard';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,6 @@ import { SingleSaleResolver } from 'src/app/guards/resolvers/sales/single-sales-
     SharedModule,
     SalesRoutingModule
   ],
-  providers: [SingleSaleResolver]
+  providers: [SingleSaleResolver, SaleCanDeactivate]
 })
 export class SalesModule { }

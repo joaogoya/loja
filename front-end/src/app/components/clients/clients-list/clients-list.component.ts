@@ -36,8 +36,6 @@ export class ClientsListComponent implements OnInit {
   private getAll() {
     this.activatedRoute.data.subscribe((data: { clients: Client[] }) => {
       this.infos.data = this.removeAtributes(data.clients);
-      localStorage.removeItem('dataclients');
-      localStorage.setItem('dataclients', JSON.stringify(this.infos));
     });
   }
 

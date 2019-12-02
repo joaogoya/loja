@@ -1,3 +1,4 @@
+import { ProductCanDeactivate } from '../../guards/deactivates/products/product-deactivate.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProductsListComponent } from './products-list/products-list.component';
@@ -16,12 +17,17 @@ const ProductsRoutes: Routes = [
       runGuardsAndResolvers: 'always'
     },
 
-    { path: 'form', component: ProductsFormComponent },
+    {
+      path: 'form',
+      component: ProductsFormComponent,
+      canDeactivate: [ProductCanDeactivate]
+    },
 
     {
       path: 'form/:id',
       component: ProductsFormComponent,
-      resolve: {product: SingleProductResolver}
+      resolve: {product: SingleProductResolver},
+      canDeactivate: [ProductCanDeactivate]
     }
 ];
 

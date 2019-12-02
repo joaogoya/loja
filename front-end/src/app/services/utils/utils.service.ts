@@ -23,11 +23,6 @@ export class UtilsService {
     error: {}
   };
 
-  /* components and data table comunication functions */
-  public dataComunication(data) {
-    this.emitData.emit(data);
-  }
-
   public cloeErrorModal() {
     this.closeModal.emit(false);
   }
@@ -36,19 +31,20 @@ export class UtilsService {
     this.deleteItem.emit(obj);
   }
 
-  /* login functions */
-  public login(user: any) {
-    if (user.email === 'user' && user.password === '1234') {
-      this.loggerdUser.emit(true);
-      this.userAuth = true;
-      this.router.navigate(['/home']);
-    }
-  }
+  // /* login functions */
+  // public login(user: any) {
+  //   if (user.email === 'user' && user.password === '1234') {
+  //     this.loggerdUser.emit(true);
+  //     this.userAuth = true;
+  //     localStorage.setItem('loggedIn', 'true');
+  //     this.router.navigate(['/home']);
+  //   }
+  // }
 
-  public guardLogin(): boolean {
-    // return this.userAuth;
-    return true;
-  }
+  // public guardLogin(): boolean {
+  //   return this.userAuth;
+  //   // return true;
+  // }
 
   /* forms error msgs functions */
   public applyCssFeedback(input, form) {
@@ -63,6 +59,10 @@ export class UtilsService {
 
   public testsValidField(input, form) {
     return form.get(input).valid && form.get(input).touched;
+  }
+
+  public notFound() {
+    this.loggerdUser.emit(true);
   }
 
   public testFormValid(formGrup: FormGroup) {
