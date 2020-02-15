@@ -152,7 +152,12 @@ backlog
 
 testar funções
 	
-escrever kit ui
+cadastro de produtos
+	imagens
+	cores
+	tamanho
+	masculino/feminino
+	adulto/infantil
 
 reutilização de inputs
 	e classe p forms
