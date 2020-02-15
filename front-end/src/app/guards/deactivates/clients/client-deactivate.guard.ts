@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { CanDeactivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { BsModalService } from 'ngx-bootstrap';
-import { ClientsFormComponent } from './../../../components/clients/clients-form/clients-form.component';
-import { DeactivateModalComponent } from '../../../shared/deactivate-modal/deactivate-modal.component';
+import { ClientsFormComponent } from './../../../modules/clients/clients-form/clients-form.component';
+import { DeactivateModalComponent } from '../../../components/deactivate-modal/deactivate-modal.component';
 
 @Injectable()
 export class ClientCanDeactivate implements CanDeactivate<ClientsFormComponent> {
