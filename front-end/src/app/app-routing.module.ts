@@ -1,6 +1,6 @@
 import { AllProductsResolver } from './guards/resolvers/products/allProductsResolve.guard';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { LoginGuard } from './guards/login.guard';
+import { LoginGuard } from './guards/login/login.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
