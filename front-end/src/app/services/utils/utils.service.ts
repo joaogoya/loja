@@ -30,22 +30,7 @@ export class UtilsService {
   public delete(obj: any) {
     this.deleteItem.emit(obj);
   }
-
-  // /* login functions */
-  // public login(user: any) {
-  //   if (user.email === 'user' && user.password === '1234') {
-  //     this.loggerdUser.emit(true);
-  //     this.userAuth = true;
-  //     localStorage.setItem('loggedIn', 'true');
-  //     this.router.navigate(['/home']);
-  //   }
-  // }
-
-  // public guardLogin(): boolean {
-  //   return this.userAuth;
-  //   // return true;
-  // }
-
+  
   /* forms error msgs functions */
   public applyCssFeedback(input, form) {
     if (form.get(input).touched) {
