@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SharedModule } from './../../components/shared.module';
+import { SharedModule } from '../../components/components.module';
 import { ClientsRoutingModule } from './clients.routing';
 import { ClientsListComponent } from './clients-list/clients-list.component';
 import { ClientsFormComponent } from './clients-form/clients-form.component';

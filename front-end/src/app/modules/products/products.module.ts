@@ -3,7 +3,7 @@ import { SingleProductResolver } from '../../guards/resolvers/products/singlePro
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { SharedModule } from './../../components/shared.module';
+import { SharedModule } from '../../components/components.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductsFormComponent } from './products-form/products-form.component';
 import { ProductsListComponent } from './products-list/products-list.component';

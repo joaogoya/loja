@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { SharedModule } from './components/shared.module';
+import { SharedModule } from './components/components.module';
 import { MenuComponent } from './components/menu/menu.component';
 import { LoginModule } from './modules/login/login.module';
 import { HomeComponent } from './components/home/home.component';
