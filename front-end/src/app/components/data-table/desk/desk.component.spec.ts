@@ -1,25 +1,29 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { DeskComponent } from "./desk.component";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { Data } from '@angular/router';
+import { Input } from '@angular/core';
 
-import { DeskComponent } from './desk.component';
-
-describe('DeskComponent', () => {
+describe("DeskComponent", () => {
   let component: DeskComponent;
   let fixture: ComponentFixture<DeskComponent>;
 
+  
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DeskComponent ]
-    })
-    .compileComponents();
+      declarations: [DeskComponent],
+      imports: [NgbModule]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(DeskComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
+    component.data = ['aaa'];
+    fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 });

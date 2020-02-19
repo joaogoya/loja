@@ -1,15 +1,15 @@
 import { TestBed, async, inject } from '@angular/core/testing';
 
-import { AllSalesResolverGuard } from './all-sales-resolver.guard';
+import { AllSalesResolver } from './all-sales-resolver.guard';
 
 describe('AllSalesResolverGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AllSalesResolverGuard]
+      providers: [AllSalesResolver]
     });
   });
 
-  it('should ...', inject([AllSalesResolverGuard], (guard: AllSalesResolverGuard) => {
+  it('should ...', inject([AllSalesResolver], (guard: AllSalesResolver) => {
     expect(guard).toBeTruthy();
   }));
 });

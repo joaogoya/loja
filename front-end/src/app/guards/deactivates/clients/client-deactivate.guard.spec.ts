@@ -1,15 +1,14 @@
 import { TestBed, async, inject } from '@angular/core/testing';
-
-import { ClientDeactivateGuard } from './client-deactivate.guard';
+import { ClientCanDeactivate } from './client-deactivate.guard';
 
 describe('ClientDeactivateGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ClientDeactivateGuard]
+      providers: [ClientCanDeactivate]
     });
   });
 
-  it('should ...', inject([ClientDeactivateGuard], (guard: ClientDeactivateGuard) => {
+  it('should ...', inject([ClientCanDeactivate], (guard: ClientCanDeactivate) => {
     expect(guard).toBeTruthy();
   }));
 });

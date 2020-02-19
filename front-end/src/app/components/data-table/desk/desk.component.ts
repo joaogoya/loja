@@ -18,6 +18,8 @@ export class DeskComponent implements OnInit {
   // tslint:disable-next-line:no-output-on-prefix
   @Output() onDelete = new EventEmitter();
 
+  public size = 0;
+
   constructor() { }
 
   ngOnInit() {

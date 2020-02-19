@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MobileComponent } from './mobile.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 describe('MobileComponent', () => {
   let component: MobileComponent;
@@ -8,7 +9,8 @@ describe('MobileComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MobileComponent ]
+      declarations: [ MobileComponent ],
+      imports: [NgbModule]
     })
     .compileComponents();
   }));
@@ -16,10 +18,11 @@ describe('MobileComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(MobileComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
+    component.data = ['aaa'];
+    fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 });

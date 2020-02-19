@@ -37,8 +37,6 @@ export class SalesListComponent implements OnInit {
 
   private getAll() {
     this.activatedRoute.data.subscribe( (data: {sales: Sale[]} ) => {
-      console.log('DATA ROTA');
-      console.log(data);
       this.handleProducts(data.sales);
       this.infos.data = this.removeAtributes(data.sales);
     });

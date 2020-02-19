@@ -22,4 +22,8 @@ describe('ProductsListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('somar', () => {
+    expect(component.soma(5,5)).toEqual(9);
+  });
 });

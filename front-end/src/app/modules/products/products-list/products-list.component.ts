@@ -32,6 +32,7 @@ export class ProductsListComponent implements OnInit {
   ngOnInit() {
     this.getAll();
     this.deleteSubscribe();
+    var resultSoma = this.soma(4,3);
   }
 
   private getAll() {
@@ -60,6 +61,10 @@ export class ProductsListComponent implements OnInit {
         this.router.navigate(['/products/list']);
       });
     }, 1800);
+  }
+
+  public soma(a, b){
+    return a+b;
   }
 
   public deleteSubscribe() {

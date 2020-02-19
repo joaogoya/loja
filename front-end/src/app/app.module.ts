@@ -17,6 +17,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { BlankComponent } from './components/blank/blank.component';
 import { DeactivateModalComponent } from './components/deactivate-modal/deactivate-modal.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   entryComponents: [
@@ -28,7 +29,8 @@ import { FooterComponent } from './components/footer/footer.component';
     HomeComponent,
     NotFoundComponent,
     BlankComponent,
-    FooterComponent
+    FooterComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

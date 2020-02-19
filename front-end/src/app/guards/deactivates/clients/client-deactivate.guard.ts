@@ -15,18 +15,13 @@ export class ClientCanDeactivate implements CanDeactivate<ClientsFormComponent> 
       route: ActivatedRouteSnapshot,
       state: RouterStateSnapshot
     ): Observable<boolean>|Promise<boolean>|boolean {
-
       if (component.showToaster) {
         return true;
       } else {
         const subject = new Subject<boolean>();
-
         const modal = this.modalService.show(DeactivateModalComponent, {});
         modal.content.subject = subject;
-
         return subject.asObservable();
       }
-
-
   }
 }

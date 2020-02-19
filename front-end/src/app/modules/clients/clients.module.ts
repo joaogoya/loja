@@ -22,7 +22,7 @@ import { ClientCanDeactivate } from './../../guards/deactivates/clients/client-d
     RouterModule,
     SharedModule,
     ClientsRoutingModule,
-    ModalModule.forRoot(),
+    ModalModule.forRoot()
   ],
   providers: [SingleClientResolver, ClientCanDeactivate]
 })

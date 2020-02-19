@@ -6,7 +6,6 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { DataTableComponent } from './data-table/wrapper/data-table.component';
 import { DeskComponent } from './data-table/desk/desk.component';
 import { MobileComponent } from './data-table/mobile/mobile.component';
-import { SpinnerComponent } from './spinner/spinner.component';
 import { ToasterComponent } from './toaster/toaster.component';
 import { DeleteModalComponent } from './delete-modal/delete-modal.component';
 import { ErrorGuardsComponent } from './error-guards/error-guards.component';
@@ -14,7 +13,6 @@ import { DeactivateModalComponent } from './deactivate-modal/deactivate-modal.co
 
 @NgModule({
   declarations: [
-    SpinnerComponent,
     DataTableComponent,
     ToasterComponent,
     DeleteModalComponent,
@@ -30,7 +28,6 @@ import { DeactivateModalComponent } from './deactivate-modal/deactivate-modal.co
     ModalModule.forRoot()
   ],
   exports: [
-    SpinnerComponent,
     NgbModule,
     DataTableComponent,
     ToasterComponent

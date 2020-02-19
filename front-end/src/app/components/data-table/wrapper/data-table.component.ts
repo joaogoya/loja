@@ -32,11 +32,11 @@ export class DataTableComponent implements OnInit {
 
   ngOnInit() {
     this.itemToDelete.component = this.infos.component;
-    this.dataHndling(this.infos.data);
+    this.dataHandling(this.infos.data);
     this.closeModalSubscriber();
   }
 
-  public dataHndling(values) {
+  public dataHandling(values) {
     this.data = [];
     this.atributes = Object.keys(values[0]);
     values.forEach(element => {
