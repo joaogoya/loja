@@ -1,6 +1,7 @@
+import { BsModalRef } from 'ngx-bootstrap';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { DeactivateModalComponent } from './deactivate-modal.component';
+import { SharedModule } from '../components.module';
 
 describe('DeactivateModalComponent', () => {
   let component: DeactivateModalComponent;
@@ -8,7 +9,9 @@ describe('DeactivateModalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DeactivateModalComponent ]
+      declarations: [  ],
+      imports: [SharedModule],
+      providers:[BsModalRef]
     })
     .compileComponents();
   }));

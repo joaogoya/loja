@@ -13,7 +13,7 @@ describe('DataTableComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ 
+      declarations: [
         DataTableComponent,
         DeskComponent,
         MobileComponent,
@@ -36,7 +36,32 @@ describe('DataTableComponent', () => {
   it('should create', () => {
     component.infos = {
       component: '',
-      data: ''
+      data: [
+        {
+          _id: "5b23f7300a23c21a847e9e57",
+          name: "uuuuuuupppppppppciytciyc",
+          email: "dzsgsdhdhd@gmail.com",
+          password: "25253636",
+          slug: "dfhdfyj",
+          __v: 0,
+        },
+        {
+          _id: "5b23f7300a23c21a847e9e57",
+          name: "uuuuuuupppppppppciytciyc",
+          email: "dzsgsdhdhd@gmail.com",
+          password: "25253636",
+          slug: "dfhdfyj",
+          __v: 0,
+        },
+        {
+          _id: "5b23f7300a23c21a847e9e57",
+          name: "uuuuuuupppppppppciytciyc",
+          email: "dzsgsdhdhd@gmail.com",
+          password: "25253636",
+          slug: "dfhdfyj",
+          __v: 0,
+        },
+      ]
     };
     fixture.detectChanges();
     expect(component).toBeTruthy();

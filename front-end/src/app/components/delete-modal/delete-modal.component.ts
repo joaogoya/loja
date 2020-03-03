@@ -11,7 +11,8 @@ export class DeleteModalComponent implements OnInit {
 
   @ViewChild('autoShownModal', { static: false }) autoShownModal: ModalDirective;
   isModalShown = false;
-  @Input('item') toDelete: string;
+  // tslint:disable-next-line:no-input-rename
+  @Input('item') toDelete: any;
 
   constructor(private utilsServie: UtilsService) { }
 

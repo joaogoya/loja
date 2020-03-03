@@ -9,11 +9,12 @@ import { Router } from '@angular/router';
 })
 export class ToasterComponent implements OnInit {
 
+  // tslint:disable-next-line:no-input-rename
   @Input('success') toasterSuccess;
 
   constructor(
     private toastr: ToastrService,
-    private router: Router
+    public router: Router
     ) { }
 
   ngOnInit() {

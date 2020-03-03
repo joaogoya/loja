@@ -20,6 +20,7 @@ export class ClientsListComponent implements OnInit {
 
   public showToaster = false;
   public toasterSuccess: boolean;
+  component: { component: string; data: { _id: string; name: string; email: string; password: string; slug: string; __v: number; }[]; };
 
   constructor(
     private clientsService: ClientsService,

@@ -1,10 +1,13 @@
 import { TestBed, async, inject } from '@angular/core/testing';
 import { SingleClientResolver } from './single-client-resolver.guard';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { RouterTestingModule } from '@angular/router/testing';
 
-describe('ClientResolverGuard', () => {
+describe('SingleClientResolver', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [SingleClientResolver]
+      providers: [SingleClientResolver, HttpClientModule],
+      imports:[HttpClientModule, RouterTestingModule]
     });
   });
 
