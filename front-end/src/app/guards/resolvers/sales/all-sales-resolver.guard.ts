@@ -7,7 +7,7 @@ import {
   Router
 } from '@angular/router';
 import { Observable, EMPTY, empty } from 'rxjs';
-import { Sale } from 'src/app/entiets/sale';
+import { Sale } from 'src/app/models/sale';
 import { SalesService } from 'src/app/services/sales/sales.service';
 
 @Injectable()
@@ -26,8 +26,6 @@ export class AllSalesResolver implements Resolve<Sale[]> {
     console.log('Resolving the sales.');
     return this.salesService.getAll().pipe(
       map(result => {
-        console.log('GUARD RESULT');
-        console.log(result);
         return result;
        }),
       catchError((err, caught) => {

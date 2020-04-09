@@ -1,4 +1,4 @@
-import { Product } from './../../../entiets/product';
+import { Product } from '../../../models/product';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../../services/products/products.service';

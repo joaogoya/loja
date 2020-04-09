@@ -5,7 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UtilsService } from 'src/app/services/utils/utils.service';
 import { SalesService } from 'src/app/services/sales/sales.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Sale } from 'src/app/entiets/sale';
+import { Sale } from 'src/app/models/sale';
 
 @Component({
   selector: 'app-sales-form',

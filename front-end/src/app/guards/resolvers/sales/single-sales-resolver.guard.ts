@@ -7,7 +7,7 @@ import {
   Router
 } from '@angular/router';
 import { Observable, EMPTY, empty } from 'rxjs';
-import { Sale } from 'src/app/entiets/sale';
+import { Sale } from 'src/app/models/sale';
 import { SalesService } from 'src/app/services/sales/sales.service';
 
 @Injectable()

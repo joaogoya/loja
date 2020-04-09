@@ -8,7 +8,7 @@ import {
 } from '@angular/router';
 import { Observable, EMPTY, empty } from 'rxjs';
 import { ProductsService } from 'src/app/services/products/products.service';
-import { Product } from 'src/app/entiets/product';
+import { Product } from 'src/app/models/product';
 
 @Injectable()
 export class SingleProductResolver implements Resolve<Product> {

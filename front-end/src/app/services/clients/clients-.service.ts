@@ -1,5 +1,5 @@
-import { ClientBase } from './../../entiets/clientsBase';
-import { Client } from '../../entiets/clients';
+import { ClientBase } from '../../models/clientsBase';
+import { Client } from '../../models/clients';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 

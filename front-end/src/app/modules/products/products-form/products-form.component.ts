@@ -1,4 +1,4 @@
-import { Product } from './../../../entiets/product';
+import { Product } from '../../../models/product';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';

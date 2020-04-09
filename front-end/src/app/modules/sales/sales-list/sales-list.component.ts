@@ -1,9 +1,9 @@
-import { Product } from './../../../entiets/product';
+import { Product } from '../../../models/product';
 import { Component, OnInit } from '@angular/core';
 import { SalesService } from './../../../services/sales/sales.service';
 import { UtilsService } from 'src/app/services/utils/utils.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Sale } from 'src/app/entiets/sale';
+import { Sale } from 'src/app/models/sale';
 
 @Component({
   selector: 'app-sales-list',

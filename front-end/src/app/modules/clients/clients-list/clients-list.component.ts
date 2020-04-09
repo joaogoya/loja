@@ -2,7 +2,7 @@ import { ClientsService } from './../../../services/clients/clients-.service';
 import { Component, OnInit } from '@angular/core';
 import { UtilsService } from 'src/app/services/utils/utils.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Client } from 'src/app/entiets/clients';
+import { Client } from 'src/app/models/clients';
 
 @Component({
   selector: 'app-clients-list',

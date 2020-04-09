@@ -1,10 +1,10 @@
 import { AllProductsResolver } from './guards/resolvers/products/allProductsResolve.guard';
-import { NotFoundComponent } from './components/not-found/not-found.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { LoginGuard } from './guards/login/login.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
-import { BlankComponent } from './components/blank/blank.component';
+import { HomeComponent } from './pages/home/home.component';
+import { BlankComponent } from './pages/blank/blank.component';
 import { ErrorGuardsComponent } from './components/error-guards/error-guards.component';
 import { AllClientsResolver } from './guards/resolvers/clients/all-clients-resolver.guard';
 import { AllSalesResolver } from './guards/resolvers/sales/all-sales-resolver.guard';

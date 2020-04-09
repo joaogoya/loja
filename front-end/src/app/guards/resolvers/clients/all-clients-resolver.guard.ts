@@ -7,7 +7,7 @@ import {
   Router
 } from '@angular/router';
 import { Observable, EMPTY, empty } from 'rxjs';
-import { Client } from 'src/app/entiets/clients';
+import { Client } from 'src/app/models/clients';
 import { ClientsService } from 'src/app/services/clients/clients-.service';
 
 @Injectable()

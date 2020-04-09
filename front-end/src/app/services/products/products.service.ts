@@ -1,7 +1,7 @@
-import { ProductBase } from './../../entiets/product-base';
+import { ProductBase } from '../../models/product-base';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Product } from '../../entiets/product';
+import { Product } from '../../models/product';
 
 @Injectable({
   providedIn: 'root'

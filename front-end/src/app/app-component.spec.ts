@@ -1,9 +1,9 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './components/menu/menu.component';
-import { HomeComponent } from './components/home/home.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
-import { BlankComponent } from './components/blank/blank.component';
+import { HomeComponent } from './pages/home/home.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { BlankComponent } from './pages/blank/blank.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -46,7 +46,7 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-it(`should have as title 'front-end'`, () => {
+  it(`should have as title 'front-end'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app.title).toEqual('front-end');
