@@ -31,6 +31,18 @@
         <div class="invalid-feedback">Este campo é obrigatório</div>
       </div>
       <hr />
+
+      <!-- <div class="row" id="productsRamndom">
+        <div class="form-group form-check col-3" formArrayName="products"
+          *ngFor="let product of products; let i = index">
+          <input type="checkbox" class="form-check-input" [formControlName] = i />
+          <label class="form-check-label" for="exampleCheck1">
+            {{ products[i] }}
+          </label>
+        </div>
+      </div>
+
+      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> -->
       <div class="row">
         <div class="form-gorup col-6">
           <label>Produtos</label>
@@ -46,8 +58,8 @@
           >
             <thead class="bg-dark">
               <tr>
-                <th class="bg-dark" style="width: 40%">Produto</th>
-                <th class="bg-dark" style="width: 30%">Quantidade</th>
+                <th class="bg-dark" style="width: 40%;">Produto</th>
+                <th class="bg-dark" style="width: 30%;">Quantidade</th>
               </tr>
             </thead>
             <tbody>
@@ -78,9 +90,9 @@
           <table *ngIf="addedProducts.length" class="table table-striped">
             <thead class="bg-dark">
               <tr>
-                <th class="bg-dark" style="width: 40%">Produto</th>
-                <th class="bg-dark" style="width: 30%">Quantidade</th>
-                <th class="bg-dark text-right" style="width: 30%">Remover</th>
+                <th class="bg-dark" style="width: 40%;">Produto</th>
+                <th class="bg-dark" style="width: 30%;">Quantidade</th>
+                <th class="bg-dark text-right" style="width: 30%;">Remover</th>
               </tr>
             </thead>
             <tbody>

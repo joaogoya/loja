@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientsService } from 'src/app/services/clients/clients-.service';
 import { ProductsService } from 'src/app/services/products/products.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { UtilsService } from 'src/app/services/utils/utils.service';
 import { SalesService } from 'src/app/services/sales/sales.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -28,8 +28,10 @@ export class SalesFormComponent implements OnInit {
   public titleMsg = 'Nova Venda';
 
   public randomSale = {
-    customer: ''
+    customer: '',
+    products: []
   };
+  // public products = ['tenis', 'camiseta', 'cd', 'telefone'];
 
   constructor(
     private clientsService: ClientsService,
@@ -46,6 +48,18 @@ export class SalesFormComponent implements OnInit {
     this.getAllClients();
     this.getAllProducts();
   }
+
+  // public buildProducts() {
+  //   const values = this.products.map(v => new FormControl(false));
+  //   return this.formBuilder.array(values);
+  // }
+
+  // public setFormBuilder(sale) {
+  //   this.form = this.formBuilder.group({
+  //     customer: [sale.customer, Validators.required],
+  //     products: this.buildProducts()
+  //   });
+  // }
 
   public setFormBuilder(sale) {
     this.form = this.formBuilder.group({
